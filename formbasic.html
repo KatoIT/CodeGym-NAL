@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Form</title>
+    <style>
+        .colorOrange{
+            color: orange;
+        }
+        .colorBlue{
+            color: blue;
+            font-size: large;
+            /* display: inline-block; */
+        }
+        .container {
+            width: 500px;
+            clear: both;
+            position: relative;
+        }
+        .container input {
+            width: 100%;
+            clear: both;
+        }
+
+        .input{
+             float:left;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <form action="" method="GET" class="colorOrange">
+        <h1 style="background-color: orange;color: white;">Sở thích của bạn</h1>
+        <div class="input">
+            <label class="colorBlue">Họ và tên</label>
+            <input type="text" name="yourname"/>
+        </div>
+        
+        <p class="colorBlue">Email</p>
+        <input type="email" name="email"/>
+        <p class="colorBlue">Sở thích</p>
+        <input type="checkbox" name="Hobby1" value="Thể thao">Thể thao
+        <input type="checkbox" name="Hobby2" value="Âm nhạc">Âm nhạc
+        <input type="checkbox" name="Hobby3" value="Đọc sách">Đọc sách <br>
+        <input type="checkbox" name="Hobby4" value="Lướt web">Lướt web
+        <input type="checkbox" name="Hobby5" value="Chơi game">Chơi game
+        <input type="checkbox" name="Hobby6" value="Điện ảnh">Điện ảnh<br>
+        <input type="checkbox" name="Hobby7" value="Du lịch">Du lịch
+        <br>
+        <input type="submit" value="Gửi thông tin">
+        <input type="reset" value="Nhập lại">
+    </form>
+    </div>
+    
+</body>
+
+</html>
