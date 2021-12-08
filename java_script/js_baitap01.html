@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>HTML file2</title>
+        <style>
+            span {
+                font-size: larger;
+                color: blue;
+                font-weight: bold;
+            }
+        </style>
+    </head>
+    <body>
+        <button onclick="bai1()">Bài 1</button>
+        <p>Kết quả bài 1 là:  <span id="result01"></span> </p>
+        <button onclick="bai2()">Bài 2</button>
+        <p>Kết quả bài 2 là:  <span id="result02"></span> </p>
+        <button onclick="bai3()">Bài 3</button>
+        <p>Kết quả bài 3 là:  <span id="result03"></span> </p>
+        <button onclick="bai4()">Bài 4</button>
+        <p>Kết quả bài 4 là:  <span id="result04"></span> </p>
+
+        <script>
+            // Bài 1
+            function bai1() {
+                let inputLy;
+                let inputHoa;
+                let inputSinh;
+                inputLy = prompt("Điểm môn Lý");
+                inputHoa = prompt("Điểm môn Hóa");
+                inputSinh = prompt("Điểm môn Sinh");
+                let ly = parseInt(inputLy);
+                let hoa = parseInt(inputHoa);
+                let sinh = parseInt(inputSinh);
+                let tb = (ly + hoa + sinh)/3;
+                document.getElementById("result01").innerHTML = tb;
+            }
+            // Bài 2
+            function bai2() {
+                let inputC;
+                inputC = prompt("Độ C");
+                let C = parseInt(inputC);
+                let F = C * 9 / 5 + 32;
+                document.getElementById("result02").innerHTML = F;
+            }
+            // Bài 1
+            function bai3() {
+                let inputBanKinh;
+                inputBanKinh = prompt("Bán kính hình tròn:");
+                let r = parseInt(inputBanKinh);
+                let S = r*Math.PI*Math.PI;
+                document.getElementById("result03").innerHTML = S;
+            }
+            // Bài 1
+            function bai4() {
+                let inputBanKinh;
+                inputBanKinh = prompt("Bán kính hình tròn:");
+                let r = parseInt(inputBanKinh);
+                let chuvi = r*2*Math.PI;
+                document.getElementById("result04").innerHTML = chuvi;
+            }
+        </script>
+    </body>
+</html>
