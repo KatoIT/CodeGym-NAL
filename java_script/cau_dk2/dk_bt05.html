@@ -1,0 +1,108 @@
+<!-- 
+    [Bài tập] Máy tính đơn giản
+ -->
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>HTML links</title>
+    <style>
+        .container {
+            margin: 10vh auto 0 auto;
+            border: 3px solid blueviolet;
+            padding: 1em;
+            width: 16em;
+        }
+
+        #display {
+            width: 100%;
+        }
+
+        .buttons {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr 1fr;
+        }
+
+        .button {
+            cursor: pointer;
+            font-size: 30px;
+            padding: 5px;
+            /* width: 3em;
+            height:3em; */
+            border: 1px solid burlywood;
+            margin: 0.5em;
+            text-align: center;
+        }
+
+        #number{
+            width: 100%;
+            margin-bottom: 1em;
+            height:2em;
+            border: 1px solid burlywood;
+            display: inline-block;
+            text-align: right;
+        }
+
+        .button:hover {
+            background-color: #e05b5b;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <section>
+        <div class="container">
+            <div id="display"></div>
+            <label type="number" id="number"></label>
+            <div class="buttons">
+                    <div class="button">1</div>
+                    <div class="button">2</div>
+                    <div class="button">3</div>
+                    <div class="button">+</div>
+
+                    <div class="button">4</div>
+                    <div class="button">5</div>
+                    <div class="button">6</div>
+                    <div class="button">-</div>
+
+                    <div class="button">7</div>
+                    <div class="button">8</div>
+                    <div class="button">9</div>
+                    <div class="button">*</div>
+
+                    <div class="button">C</div>
+                    <div class="button">0</div>
+                    <div id="equal" class="button">=</div>
+                    <div class="button">/</div>
+            </div>
+        </div>
+    </section>
+
+<script>
+    let display = document.getElementById('number');
+    let buttons = Array.from(document.getElementsByClassName('button'));
+    buttons.map( button => {
+    button.addEventListener('click', (e) => {
+        switch(e.target.innerText){
+            case 'C':
+                display.innerText = '';
+                break;
+            case '=':
+                try{
+                    display.innerText = eval(display.innerText);
+                } catch {
+                    display.innerText = "Error";
+                }
+                break;
+            default:
+                display.innerText += e.target.innerText;
+        }
+    });
+});
+</script>
+
+</body>
+
+
+</html>
