@@ -1,0 +1,139 @@
+<!-- 
+    [Bài tập] Tạo bảng nâng cao
+    Hãy tạo lịch của một tháng
+ -->
+ <!DOCTYPE html>
+<html>
+    <head>
+        <title> Table simple </title>
+        <style>
+            body {
+                padding: 50px 250px;
+            }
+
+            table {
+                width: 100%;
+                border-collapse: collapse;
+            }
+
+            td, th {
+                padding: 20px;
+                border: 2px solid black;
+                width: 10%;
+            }
+            .header th{
+                font-family: 'Patua One', cursive;
+                font-size:24px;
+                font-weight: bold;
+                text-align:center;
+                padding:20px;
+                border-color: white;
+                background-color: orange;
+            }
+            .header td{
+                font-family: 'Open Sans', sans-serif;
+                font-weight: bold;
+                color:#5f6062;
+                font-size:24px;
+                padding:20px 20px 20px 20px;
+                border: white;
+                text-align: center;
+            }
+            .content td{
+                font-family: 'Open Sans', sans-serif;
+                font-weight: bold;
+                color:#5f6062;
+                font-size:34px;
+                padding:20px 20px 20px 20px;
+                border: 1px thin black;
+                text-align: center;
+            }
+            .hover {
+                background: red;
+            }
+            h1 {
+                text-align: center;
+                 color: blue;
+            }
+            .colorSunday {
+                color: red;
+            }
+            .colorSaturday {
+                color: blue;
+            }
+            sub {
+                color: black;
+            }
+        </style>
+    </head>
+<body>
+    <h1>Tháng 10 - October</h1>
+    <table class="header">
+        <tr>
+            <th style="background-color: red;color: white;">C.Nhật</th>
+            <th>T.Hai</th>
+            <th>T.Ba</th>
+            <th>T.Tư</th>
+            <th>T.Năm</th>
+            <th>T.Sáu</th>
+            <th style="background-color: blue;color: white;">T.Bảy</th>
+        </tr>
+        <tr>
+            <td>Sun</td>
+            <td>Mon</td>
+            <td>Tue</td>
+            <td>Wed</td>
+            <td>Thu</td>
+            <td>Fri</td>
+            <td>Sat</td>
+        </tr>
+    </table>
+    <table class="content">
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td><span>1<small><sub>13</sub></small></span></td>
+            <td><span>2<small><sub>14</sub></small></span></td>
+            <td><span class="colorSaturday">3<small><sub>15</sub></small></span></td>
+        </tr>
+        <tr>
+            <td><span class="colorSunday">4<small><sub>16</sub></small></span></td>
+            <td><span>5<small><sub>17</sub></small></span></td>
+            <td><span>6<small><sub>18</sub></small></span></td>
+            <td><span>7<small><sub>19</sub></small></span></td>
+            <td><span>8<small><sub>20</sub></small></span></td>
+            <td><span>9<small><sub>21</sub></small></span></td>
+            <td><span class="colorSaturday">10<small><sub>22</sub></small></span></td>
+        </tr>
+        <tr>
+            <td><span class="colorSunday">11<small><sub>23</sub></small></span></td>
+            <td><span>12<small><sub>24</sub></small></span></td>
+            <td><span>13<small><sub>25</sub></small></span></td>
+            <td><span>14<small><sub>26</sub></small></span></td>
+            <td><span>15<small><sub>27</sub></small></span></td>
+            <td><span>16<small><sub>28</sub></small></span></td>
+            <td><span class="colorSaturday">17<small><sub>29</sub></small></span></td>
+        </tr>
+        <tr>
+            <td><span class="colorSunday">18<small><sub>1.9</sub></small></span></td>
+            <td><span>19<small><sub>2</sub></small></span></td>
+            <td><span>20<small><sub>3</sub></small></span></td>
+            <td><span>21<small><sub>4</sub></small></span></td>
+            <td><span>22<small><sub>5</sub></small></span></td>
+            <td><span>23<small><sub>6</sub></small></span></td>
+            <td><span class="colorSaturday">24<small><sub>7</sub></small></span></td>
+        </tr>
+        <tr>
+            <td><span class="colorSunday">25<small><sub>8</sub></small></span></td>
+            <td><span>26<small><sub>9</sub></small></span></td>
+            <td><span>27<small><sub>10</sub></small></span></td>
+            <td><span>28<small><sub>11</sub></small></span></td>
+            <td><span>29<small><sub>12</sub></small></span></td>
+            <td><span>30<small><sub>13</sub></small></span></td>
+            <td><span class="colorSaturday">31<small><sub>14</sub></small></span></td>
+        </tr>
+    </table>
+</body>
+</html>
