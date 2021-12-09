@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset=utf-8 />
+    <title>...</title>
+</head>
+
+<body>
+    <!-- Bài 1 -->
+    <script>
+        myColor = ["Red", "Green", "White", "Black"];
+        console.log(myColor.toString());
+        console.log(myColor.join());
+        console.log(myColor.join('+'));
+    </script>
+    <!-- Bài 2 -->
+    <script>
+        const num = prompt();
+        const str = num.toString();
+        const result = [str[0]];
+
+        for (let x = 1; x < str.length; x++) {
+            if ((str[x - 1] % 2 === 0) && (str[x] % 2 === 0)) {
+                result.push('-', str[x]);
+            }
+            else {
+                result.push(str[x]);
+            }
+        }
+        console.log(result.join(''));
+    </script>
+    <!-- Bài 3 -->
+    <script>
+        
+        var str2 = 'The Quick Brown Fox';
+        var UPPER = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+        var LOWER = 'abcdefghijklmnopqrstuvwxyz';
+        var result3 = [];
+
+        for (var x = 0; x < str2.length; x++) {
+            if (UPPER.indexOf(str2[x]) !== -1) {
+                result3.push(str2[x].toLowerCase());
+            }
+            else if (LOWER.indexOf(str2[x]) !== -1) {
+                result3.push(str2[x].toUpperCase());
+            }
+            else {
+                result3.push(str2[x]);
+            }
+        }
+        console.log(result3.join(''));
+    </script>
+</body>
+
+</html>

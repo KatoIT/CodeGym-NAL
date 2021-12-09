@@ -1,0 +1,28 @@
+<!-- 
+    //
+ -->
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>...</title>
+    </head>
+    <body>
+        <script>
+            function footToMeter(foot){
+                return 0.305 * foot;
+            }
+            function meterToFoot(meter){
+                return 3.279 * meter;
+            }
+            for (let index = 1; index <= 10; index++) {
+                m = footToMeter(1.0*index);
+                document.write(index + " feet = " + m + " meters <br>");
+                f = meterToFoot(1.0*(index*5)+15);
+                document.write((1.0*(index*5)+15) + " meters = " + f + " feet <br>");
+            }
+
+            
+        </script>
+    </body>
+</html>

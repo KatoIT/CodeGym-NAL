@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset=utf-8 />
+    <title>...</title>
+</head>
+
+<body>
+    <form action="#">
+        <input type="text" id="text" required>
+        <button type="submit" onclick="search()">Tra cứu</button>
+    </form>
+    <label id="res"></label>
+    <script>
+        let en = ['one', 'two', 'three', 'four', 'five'];
+        let vi = ['một', 'hai', 'ba', 'bốn', 'năm'];
+
+        function search(){
+            text = document.getElementById("text");
+            if (en.indexOf(text.value)!=-1){
+                document.getElementById("res").innerHTML = vi[en.indexOf(text.value)];
+            }
+            else{
+                document.getElementById("res").innerHTML = "Not found";
+            }
+        }
+
+    </script>
+</body>
+
+
+
+</html>

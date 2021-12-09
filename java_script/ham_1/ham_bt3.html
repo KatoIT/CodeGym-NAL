@@ -1,0 +1,81 @@
+<!-- 
+    //
+ -->
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>...</title>
+    </head>
+    <body>
+        <div>
+            <button onclick="alertMessage()">Bài 1</button>
+            <button onclick="main2()">Bài 2</button>
+            <button onclick="ex3(4, 6)">Bài 3</button>
+            <button onclick="main4()">Bài 4</button>
+            <button onclick="main5()">Bài 5</button>
+        </div>
+        <script>
+            function alertMessage(){
+                alert("Xin chao");
+            }
+            
+            function ex2(number){
+                return number + 1;
+            }
+            
+            function ex3(number1, number2){
+                if (number1<=number2) {
+                    alert(number1+number2);
+                }else{
+                    alert(number1 + " > " + number2);
+                }
+            }
+
+            function addNumbers() {
+                firstNum = 4;
+                secondNum = 8;
+                result = firstNum + secondNum;
+                return result;
+            }
+
+
+            function main4() {
+                 result = 0;
+                alert(result);
+                result = addNumbers(); 
+                alert(result);
+            }
+
+            function main2() {
+                var example2 = ex2(5);
+                alert("Bài 2: " + example2);
+            }
+            // Bài 5
+            function ex5(arr) {
+                let constellation = "";
+                for (let index = 0; index < arr.length; index++) {
+                    let element = arr[index];
+                    if (constellation == element) {
+                        return index;
+                    }
+                }
+                return -1;
+            }
+
+            function main5() {
+                let arr1 = ["Polaris", "Aldebaran", "Deneb", "Vega", "Altair", "Dubhe", "Regulus"];
+                let arr2 = ["Ursa Minor", "Tarurus", "Cygnus", "Lyra", "Aquila", "Ursa Major", "Leo"];
+                let ind = ex5(arr1);
+                if (ind == -1) {
+                    alert("Null")
+                }else{
+                    alert(arr2[ind])
+                }
+            }
+
+
+
+        </script>
+    </body>
+</html>

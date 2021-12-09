@@ -1,0 +1,33 @@
+<!DOCTYPE HTML>
+
+<html>
+
+<head>
+    <title>...</title>
+</head>
+
+<body>
+    <script>
+        function tableCreate() {
+            var body = document.getElementsByTagName('body')[0];
+            var tbl = document.createElement('table');
+            tbl.style.width = '100%';
+            tbl.setAttribute('border', '1');
+            var tbdy = document.createElement('tbody');
+            for (var i = 1; i <= 10; i++) {
+                var row = document.createElement('tr');
+                for (var j = 1; j <= 10; j++) {
+                    var td = document.createElement('td');
+                    td.appendChild(document.createTextNode(i + 'x' + j + '=' + (i * j)));
+                    row.appendChild(td);
+                    tbdy.appendChild(row);
+                }
+            }
+            tbl.appendChild(tbdy);
+            body.appendChild(tbl)
+        }
+        tableCreate();
+    </script>
+</body>
+
+</html>

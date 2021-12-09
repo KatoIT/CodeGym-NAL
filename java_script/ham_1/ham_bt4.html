@@ -1,0 +1,103 @@
+<!-- 
+    //
+ -->
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>...</title>
+    </head>
+    <body>
+        <div>
+            <button onclick="example1(5)">Bài 1</button>
+            <button onclick="example2(5)">Bài 2</button>
+            <button onclick="main3(5)">Bài 3</button>
+            <button onclick="example4(5)">Bài 4</button>
+            <button onclick="example5(-5,7,3)">Bài 5</button>
+            <button onclick="example6(5)">Bài 6</button>
+            <button onclick="example7(1, 2)">Bài 7</button>
+            <button onclick="example8([1,2,3,4,6])">Bài 8</button>
+            <button onclick="example9(['a', 'b', 'c', 'd', 'b', 'c', 'd'], 'e')">Bài 9</button>
+        </div>
+        <script>
+            // Bài 1
+            function example1(num){
+                alert(num + "^2 = " + num*num);
+            }
+            
+            // Bài 2
+            function example2(r){
+                alert("R = " + r + "\nS = " + (r*Math.PI *Math.PI) + "\nC = " + 2*r*Math.PI );
+            }
+            
+            // Bài 3
+            function main3(num) {
+                let result = example3(num);
+                alert(num + "! = " + result);
+            }
+
+            function example3(num){
+                if (num == 1) {
+                    return 1;
+                }else{
+                    return example3(num-1)*num;
+                }
+            }
+            
+            // Bài 4
+            function example4(ch){
+                if(isNaN(ch)){
+                    alert(ch + " is not a number");
+                }else{
+                    alert(ch + " is a number");
+                }
+            }
+            
+            // Bài 5
+            function example5(num1, num2, num3){
+                alert("num1 = " + num1 + "\nnum2 = " + num2 + "\nnum3 = " + num3  + "\nMin: " + Math.min(num1, num2, num3));
+            }
+
+            // Bài 6
+            function example6(num){
+                if (num>0 && Number.isInteger(num)) {
+                    alert(num + " là số nguyên dương");
+                }else{
+                    alert(num + " KHÔNG là số nguyên dương");
+                }
+            }
+            
+            // Bài 7
+            function example7(x, y){
+                let temp = x;
+                x = y;
+                y = temp;
+                alert("("+ x + ", " + y + ") <=> (" + x + ", " + y + ")" );
+            }
+            
+            // Bài 8
+            function example8(arr){
+                alert("Array: "+arr + "\nArray reverse: " + arr.reverse());
+            }
+            
+            // Bài 9
+            function example9(arrCh, ch){
+                let countCh = 0;
+                arrCh.forEach(element => {
+                    if (ch == element) {
+                        countCh++;
+                    }
+                });
+                if (countCh == 0) {
+                    countCh--;
+                }
+                alert("Array: " + arrCh + "\nCharacter: " + ch + "\nCount: " + countCh);
+            }
+
+
+
+
+            
+        </script>
+    </body>
+</html>

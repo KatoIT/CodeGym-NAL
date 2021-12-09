@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset=utf-8 />
+    <title>...</title>
+    <style>
+        body {
+            padding-top: 50px
+        }
+    </style>
+</head>
+
+<body>
+
+    <!DOCTYPE html>
+    <html lang="en">
+
+    <body>
+        <h3>Caro Game Simple</h3>
+        <h1 id="tic_tac_toe" />
+        <input type="button" value="Change Value" onclick="changeValue()">
+    </body>
+
+    </html>
+    <script>
+        let b = document.getElementById("tic_tac_toe");
+
+        let board = [];
+        let data = "";
+        for (let i = 0; i < 3; i++) {
+            board[i] = new Array('.', '.', '.');
+        }
+
+        for (let i = 0; i < 3; i++) {
+            data += "<br/>";
+            for (let j = 0; j < 3; j++) {
+                data += board[i][j] + "&nbsp;&nbsp;";
+            }
+        }
+
+        data += "<br/><br/><input type='button' value='Change Value' onclick='changeValue()'>"
+        b.innerHTML = data;
+        let turn = 0;
+
+        function changeValue() {
+            if (turn === 0) {
+                let positionX = prompt("Turn X, input X corr: ");
+                let positionY = prompt("Turn X, input Y corr: ");
+                data = "";
+                board[positionX][positionY] = "x";
+                for (let i = 0; i < 3; i++) {
+                    data += "<br/>";
+                    for (let j = 0; j < 3; j++) {
+                        data += board[i][j] + "&nbsp;&nbsp;&nbsp;&nbsp;";
+                    }
+                }
+                data += "<br/><br/><input type='button' value='Change Value' onclick='changeValue()'>"
+                b.innerHTML = "<hr/>" + data;
+
+                if (isEndGame()===1){
+                    document.write('X win');
+                }
+                
+                if(isEndGame()===-1){
+                    document.write('O win');
+                }
+
+                turn = 1 - turn;
+                console.log(turn);
+            }
+            else {
+                let positionX = prompt("Turn O, input X corr: ");
+                let positionY = prompt("Turn O, input Y corr: ");
+                data = "";
+                board[positionX][positionY] = "o";
+                for (let i = 0; i < 3; i++) {
+                    data += "<br/>";
+                    for (let j = 0; j < 3; j++) {
+                        data += board[i][j] + "&nbsp;&nbsp;&nbsp;&nbsp;";
+                    }
+                }
+                data += "<br/><br/><input type='button' value='Change Value' onclick='changeValue()'>"
+                b.innerHTML = "<hr/>" + data;
+
+                turn = 1 - turn;
+            }
+
+        }
+
+        function isEndGame() {
+            for (let x = 0; x < 3; x++) {
+                for (let y = 0; y < 3; y++) {
+                    if (y < 3 && y + 1 < 3 && y + 2 < 3 && board[x][y] === board[x][y + 1] && board[x][y] === board[x][y + 2]  && board[x][y]!='.') {
+                        if (board[x][y] === 'x') {
+                            return 1;
+                        }
+                        else {
+                            return -1;
+                        }
+                    }
+
+                    if (x < 3 && x + 1 < 3 && x + 2 < 3 && board[x][y] === board[x + 1][y] && board[x][y] === board[x + 2][y] && board[x][y]!='.') {
+                        if (board[x][y] === 'x') {
+                            return 1;
+                        }
+                        else{
+                            return -1;
+                        }
+                    }
+
+                    // TO DO
+                }
+            }
+        }
+
+    // }
+
+    </script>
+</body>
+
+
+
+</html>
