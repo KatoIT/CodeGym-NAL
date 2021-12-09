@@ -1,62 +1,65 @@
 <!DOCTYPE html>
 <html>
-
-<body>
-    <script>
-        let MyDate = function (day, month, year) {
-
-            this.day = day;
-
-            this.month = month;
-
-            this.year = year;
-
-            this.getDay = function () {
-                return this.day;
-            }
-            this.getMonth = function () {
-                return this.month;
-            }
-            this.getYear = function () {
-                return this.year;
-            }
-
-            this.setDay = function (day) {
-                this.day = day;
-            }
-            this.setMonth = function (month) {
-                this.month = month;
-            }
-            this.setYear = function (year) {
-                this.year = year;
-            }
-
-            this.setDate = function (day, month, year) {
+    <head>
+        <meta charset="utf-8">
+        <title>...</title>
+    </head>
+    <body>
+        <script>
+            let MyDate = function (day, month, year) {
 
                 this.day = day;
 
                 this.month = month;
 
                 this.year = year;
-            }
 
-            this.toString = function () {
-                return this.day + '/' + this.month + '/' + this.year;
-            }
-        };
+                this.getDay = function () {
+                    return this.day;
+                }
+                this.getMonth = function () {
+                    return this.month;
+                }
+                this.getYear = function () {
+                    return this.year;
+                }
 
-        let date = new MyDate(9, 12, 2021);
+                this.setDay = function (day) {
+                    this.day = day;
+                }
+                this.setMonth = function (month) {
+                    this.month = month;
+                }
+                this.setYear = function (year) {
+                    this.year = year;
+                }
 
-        alert(date.toString());
+                this.setDate = function (day, month, year) {
 
-        date.setDay(10);
-        date.setMonth(10);
-        date.setYear(2019);
+                    this.day = day;
 
-        alert(date.toString());
+                    this.month = month;
+
+                    this.year = year;
+                }
+
+                this.toString = function () {
+                    return this.day + '/' + this.month + '/' + this.year;
+                }
+            };
+
+            let date = new MyDate(9, 12, 2021);
+
+            alert(date.toString());
+
+            date.setDay(10);
+            date.setMonth(10);
+            date.setYear(2019);
+
+            alert(date.toString());
 
 
-    </script>
-</body>
+        </script>
+    </body>
 
 </html>

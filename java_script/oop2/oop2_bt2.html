@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+
+<body id="body">
+    <script>
+        function temp(c) {
+            this.c =c;
+
+            this.setC = function(c){
+                this.w = c;
+            }
+
+            this.cToF = function(){
+                return c*9.5+32;
+            }
+
+            this.cToK = function(){
+                return c+273;
+            }
+        }
+
+        let temperature = new temp(25);
+        document.writeln("Độ C: " + temperature.c);
+        document.writeln("Độ F: " + temperature.cToF());
+        document.writeln("Độ K: " + temperature.cToK());
+    </script>
+</body>
+
+</html>

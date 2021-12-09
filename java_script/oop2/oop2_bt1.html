@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+
+<body id="body">
+    <canvas id="myCanvas" width="200px" height="200px" style="border:1px solid #d3d3d3;"></canvas>
+    <label id="s"></label>    
+    <label id="c"></label>    
+    <script>
+        function rect(w, h) {
+            this.w = w;
+            this.h = h;
+
+            this.s = function () {
+                return w * h;
+            }
+
+            this.c = function () {
+                return w * 2 + h * 2;
+            }
+
+            this.setW = function(w){
+                this.w = w;
+            }
+        
+            this.setH = function(h){
+                this.h = h;
+            }
+        }
+
+        let box = new rect(100,200);
+
+        const canvas = document.getElementById('myCanvas') ;
+        const ctx = canvas.getContext('2d');
+
+        ctx.beginPath();
+        ctx.rect(20, 20, 150, 100);
+        ctx.stroke();
+
+        document.getElementById("s").innerHTML = 'Diện tích: ' + box.s();
+        document.getElementById("c").innerHTML = 'Chu vi: ' + box.c();
+
+
+    </script>
+</body>
+
+</html>
