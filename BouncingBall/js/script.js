@@ -20,15 +20,22 @@ function Circle(x, y, vx, vy, radius) {
         ctx.fillStyle = getRandomColor();
         ctx.fill();
         ctx.closePath();
+        //
         // Move
         this.x += this.vx;
         this.y += this.vy;
         // 
-        if (this.y >= (HEIGHT-5)) {
+        if (this.y >= (pad.getY() +5)) {
             alert("Lose!");
             clearInterval(xVar);
         }
-        if (this.y <= 5 || (this.y >= pad.getY() -5 && (this.x <= pad.getX() + WIDTH_PADDLE) && (this.x >= pad.getX()))) {
+        if (this.y >= (pad.getY() - 5) &&
+            (this.x <= pad.getX() + WIDTH_PADDLE) &&
+            (this.x >= pad.getX())) {
+            this.vy = -this.vy;
+            this.vx -= isMoveLeft;
+        }
+        if (this.y <= 5) {
             this.vy = -this.vy;
         }
         if (this.x >= (WIDTH - 5) || this.x <= 5) {
@@ -53,7 +60,7 @@ function Paddle() {
         var ctx = document.getElementById("myCanvas").getContext("2d");
         ctx.beginPath();
         ctx.fillRect(this.x, this.y, WIDTH_PADDLE, HEIGHT_PADDLE);
-        ctx.fillStyle = "rgb(150,10,150)";
+        ctx.fillStyle = "rgb(100,60,100)";
         ctx.fill();
         ctx.closePath();
 
@@ -91,20 +98,27 @@ function moveSelection(evt) {
     switch (evt.keyCode) {
         case 37:
             // Left
+            isMoveLeft += 0.01;
             pad.update(-10);
             break;
         case 39:
             // Right
+            isMoveLeft -= 0.01;
             pad.update(10);
             break;
     }
 }
+function stop() {
+    isMoveLeft = 0;
+}
+
 function docReady() {
     window.addEventListener('keydown', moveSelection);
+    window.addEventListener('keyup', stop);
 }
 
 let pad = new Paddle(2);
-let ball = new Circle(500, 20, 2, 3, 10);
+let ball = new Circle(500, 20, 1, 2, 10);
 
 function update() {
     clearCanvas();

@@ -1,0 +1,68 @@
+<!-- 
+    //
+ -->
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>...</title>
+        <style>
+            button {
+                width: 100px;
+                background-color: rgb(201, 201, 201);
+                font-weight: bold;
+            }
+        </style>
+    </head>
+    <body>
+        <div>
+            <h3><button id="good" onclick="goodClick()">OFF</button> Good</h3>
+            <h3><button id="cheap" onclick="cheapClick()">OFF</button> Cheap</h3>
+            <h3><button id="fast" onclick="fastClick()">OFF</button> Fast</h3>
+        </div>
+        <script>
+            let valG = document.getElementById("good");
+            let valC = document.getElementById("cheap");
+            let valF = document.getElementById("fast");
+            function goodClick() {
+                if (valG.textContent == "OFF") {
+                    valG.innerHTML = "ON";
+                    valG.style.backgroundColor = "rgb(82, 184, 252)";
+                    if (valC.textContent == "ON" && valF.textContent == "ON") {
+                        valF.innerHTML = "OFF";
+                        valF.style.backgroundColor = "rgb(201, 201, 201)";
+                    }
+                }else{
+                    valG.innerHTML = "OFF";
+                    valG.style.backgroundColor = "rgb(201, 201, 201)";
+                }
+            }
+            function cheapClick() {
+                if (valC.textContent == "OFF") {
+                    valC.innerHTML = "ON";
+                    valC.style.backgroundColor = "rgb(82,255, 142)";
+                    if (valG.textContent == "ON" && valF.textContent == "ON") {
+                        valG.innerHTML = "OFF";
+                        valG.style.backgroundColor = "rgb(201, 201, 201)";
+                    }
+                }else{
+                    valC.innerHTML = "OFF";
+                    valC.style.backgroundColor = "rgb(201, 201, 201)";
+                }
+            }
+            function fastClick() {
+                if (valF.textContent == "OFF") {
+                    valF.innerHTML = "ON";
+                    valF.style.backgroundColor = "rgb(0, 184, 0)";
+                    if (valC.textContent == "ON" && valG.textContent == "ON") {
+                        valC.innerHTML = "OFF";
+                        valC.style.backgroundColor = "rgb(201, 201, 201)";
+                    }
+                }else{
+                    valF.innerHTML = "OFF";
+                    valF.style.backgroundColor = "rgb(201, 201, 201)";
+                }
+            }
+        </script>
+    </body>
+</html>
