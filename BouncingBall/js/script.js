@@ -1,7 +1,9 @@
 const WIDTH = 1000;
 const HEIGHT = 500;
 const HEIGHT_PADDLE = 7;
-const WIDTH_PADDLE = WIDTH;
+const WIDTH_PADDLE = 150;
+var scores = 0;
+var isMoveLeft = 0; 
 
 function Circle(x, y, vx, vy, radius) {
     this.x = x;
@@ -18,27 +20,25 @@ function Circle(x, y, vx, vy, radius) {
         ctx.fillStyle = getRandomColor();
         ctx.fill();
         ctx.closePath();
+        // Move
         this.x += this.vx;
         this.y += this.vy;
-        // Xử lý chạm
+        // 
         if (this.y >= (HEIGHT-5)) {
             alert("Lose!");
             clearInterval(xVar);
-            // this.vy = -this.vy;
         }
-        console.log("" + this.x + ", " + this.y + ", " + pad.getX() + ", " + pad.getY());
         if (this.y <= 5 || (this.y >= pad.getY() -5 && (this.x <= pad.getX() + WIDTH_PADDLE) && (this.x >= pad.getX()))) {
-            console.log("" + this.x + ", " + this.y + ", " + pad.getX() + ", " + pad.getY());
             this.vy = -this.vy;
         }
         if (this.x >= (WIDTH - 5) || this.x <= 5) {
             this.vx = -this.vx;
         }
     }
-
 }
+
 function Paddle() {
-    this.x = 500;
+    this.x = 500 - WIDTH_PADDLE/2;
     this.y = 450;
     //
     this.update = function (vx) {
@@ -53,7 +53,7 @@ function Paddle() {
         var ctx = document.getElementById("myCanvas").getContext("2d");
         ctx.beginPath();
         ctx.fillRect(this.x, this.y, WIDTH_PADDLE, HEIGHT_PADDLE);
-        ctx.fillStyle = getRandomColor();
+        ctx.fillStyle = "rgb(150,10,150)";
         ctx.fill();
         ctx.closePath();
 
@@ -67,11 +67,13 @@ function Paddle() {
     }
 
 }
+
 // số ngẫu nhiên 
 function getRandomHex() {
-    // return Math.floor(Math.random() * 255);
-    return 5;
+    return Math.floor(Math.random() * 255);
+    // return 5;
 }
+
 // màu ngẫu nhiên
 function getRandomColor() {
     var red = getRandomHex();
@@ -80,63 +82,36 @@ function getRandomColor() {
     return "rgb(" + red + "," + blue + "," + green + ")";
 }
 
-var ball;
-// tạo 1 quả bóng
-function createCircle() {
-    var ctx = document.getElementById("myCanvas").getContext("2d");
-    var radius = 10;
-    var color = getRandomColor();
-    // Vị trí ban dầu
-    var x = 500;
-    var y = 20;
-    // var x = Math.random() * window.innerWidth;
-    // var y = Math.random() * window.innerHeight;
-
-    var rndX = 2;     //random starting velocity
-    var rndY = 2;
-    while (rndX == rndY) {
-        rndY = Math.floor((Math.random() * 8) + 1);
-    }
-    console.log(rndX + ", " + rndY);
-    var circle = new Circle(x, y, rndX, rndY, radius);
-    ball = circle;
-
-    ctx.beginPath();
-    ctx.arc(circle.x, circle.y, circle.radius, 0, 2 * Math.PI);
-    ctx.beginPath();
-    ctx.fillStyle = color;
-    ctx.fill();
-
-}
-
 function clearCanvas(){
     var ctx = document.getElementById("myCanvas").getContext("2d");
     ctx.clearRect(0, 0, WIDTH, HEIGHT);
 }
-let pad = new Paddle(2);
-
-createCircle()
-function update() {
-    clearCanvas();
-    ball.update(pad);
-    pad.update(0);
-}
-
-const xVar = setInterval(update, 1000 / 60);
-
 
 function moveSelection(evt) {
     switch (evt.keyCode) {
         case 37:
             // Left
-            pad.update(-15);
+            pad.update(-10);
             break;
         case 39:
             // Right
-            pad.update(15);
+            pad.update(10);
             break;
     }
 }
 function docReady() {
     window.addEventListener('keydown', moveSelection);
 }
+
+let pad = new Paddle(2);
+let ball = new Circle(500, 20, 2, 3, 10);
+
+function update() {
+    clearCanvas();
+    ball.update(pad);
+    pad.update(0);
+    scores += 1;
+    document.getElementById("score").innerHTML = scores;
+}
+
+const xVar = setInterval(update, 700 / 60);
