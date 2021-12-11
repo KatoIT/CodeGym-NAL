@@ -1,0 +1,59 @@
+<!-- 
+    [Bài tập] Ứng dụng vui DoYouLoveMe
+ -->
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>HTML links</title>
+</head>
+
+<style>
+    h1{
+        position: absolute;
+        top:35%;
+    }
+
+    #btnYes{
+        position: absolute;
+        top:45%;
+        left: 45%;
+        width: 10%;
+        height: 10%;
+    }
+
+    #btnNo{
+        position:absolute;
+        top:57%;
+        left: 45%;
+        width: 10%;
+        height: 10%;
+    }
+    .container {
+        padding: 10px 30%;
+        
+    }
+
+</style>
+
+<body>
+    <div class="container">
+        <h1>Do you love me?</h1>
+        <button type="button" id="btnYes" onclick="yes()">YES</button>
+        <button type="button" id="btnNo" onmouseover="catchMeIfYouCan()">NO</button>
+    </div>
+    <script>
+        function yes() {
+            alert("<3");
+        }
+        function catchMeIfYouCan() {
+            var x = Math.round(Math.random() * window.innerWidth);
+            var y = Math.round(Math.random() * window.innerHeight);
+            document.getElementById('btnNo').style.left = x + 'px';
+            document.getElementById('btnNo').style.top = y + 'px';
+        }
+    </script>
+</body>
+
+</html>
