@@ -92,3 +92,23 @@ const promise = buyACar("Vinfast").then(value => {
 }, error => {
     console.log(error);
 })
+
+/**
+ *  [Bài tập] Tính tổng các số Fibonacci
+ */
+function fibonacci(number: number): number {
+    if (number <= 2) {
+        return 1;
+    } else {
+        return fibonacci(number - 1) + fibonacci(number - 2);
+    }
+}
+
+sum = 0;
+for (let i = 1; i <= 10; i++) {
+    let fi = fibonacci(i);
+    console.log("f" + i + " = " + fi);
+    sum += fi;
+}
+console.log("Sum = " + sum);
+
