@@ -6,12 +6,26 @@ import { AppComponent } from './app.component';
 import { FontSizeEditorComponent } from './font-size-editor/font-size-editor.component';
 import {FormsModule} from "@angular/forms";
 import { PetComponent } from './pet/pet.component';
+import { ProductComponent } from './product/product.component';
+import { CalculatorComponent } from './calculator/calculator.component';
+import { ColorComponent } from './color/color.component';
+import { ArticleComponent } from './article/article.component';
+import { LikeComponent } from './like/like.component';
+import { NavbarComponent } from './navbar/navbar.component';
+import { FooterComponent } from './footer/footer.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     FontSizeEditorComponent,
-    PetComponent
+    PetComponent,
+    ProductComponent,
+    CalculatorComponent,
+    ColorComponent,
+    ArticleComponent,
+    LikeComponent,
+    NavbarComponent,
+    FooterComponent
   ],
     imports: [
         BrowserModule,

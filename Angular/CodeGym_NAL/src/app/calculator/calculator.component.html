@@ -1,0 +1,10 @@
+<p>First number</p>
+<input type="number" [(ngModel)]="firstNumber"/>
+<p>Second number</p>
+<input type="number" [(ngModel)]="secondNumber"/>
+<p>Operator: <span style="font-weight: bold">{{operator}}</span></p>
+<button (click)="setOperator('+')" >+</button><span>&nbsp;</span>
+<button (click)="setOperator('-')" >-</button><span>&nbsp;</span>
+<button (click)="setOperator('x')" >x</button><span>&nbsp;</span>
+<button (click)="setOperator('/')" >/</button><span>&nbsp;</span>
+<h2>Result = {{ calculator()}}</h2>
