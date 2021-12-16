@@ -1,0 +1,90 @@
+<h2>Register</h2>
+<hr>
+
+<div class="container-fluid col-3">
+  <form [formGroup]="registerForm">
+    <div style="min-height: 75px">
+      <!--  Email  -->
+      <input type="email" class="form-control" formControlName="email" placeholder="Email enter">
+      <div *ngIf="email && email.invalid && (email.dirty || email.touched)"
+           class="alert-danger">
+        <label *ngIf="email.errors?.['required']">
+          Email is required.
+        </label>
+        <label *ngIf="email.errors?.['pattern']">
+          Email is invalid.
+        </label>
+      </div>
+    </div>
+
+    <div style="min-height: 75px">
+      <!--  Password  -->
+      <input type="password" class="form-control" formControlName="password" placeholder="Password enter"
+             [(ngModel)]="pass">
+      <div *ngIf="password && password.invalid && (password.dirty || password.touched)"
+           class="alert-danger">
+        <label *ngIf="password.errors?.['required']">
+          Password is required.
+        </label>
+        <label *ngIf="password.errors?.['minlength']">
+          Password must be at least 6 characters long.
+        </label>
+      </div>
+    </div>
+    <div style="min-height: 75px">
+      <!--  Password Confirm  -->
+      <input type="password" class="form-control" formControlName="passwordConfirm"
+             placeholder="Password Confirm enter">
+      <div *ngIf="passwordConfirm && passwordConfirm.invalid && (passwordConfirm.dirty || passwordConfirm.touched)"
+           class="alert-danger">
+        <label *ngIf="passwordConfirm.errors?.['required']">
+          Password Confirm is required.
+        </label>
+        <label *ngIf="passwordConfirm.errors?.['passwordConfirm']">
+          Password Confirm not exam.
+        </label>
+      </div>
+    </div>
+
+    <div class="dropdown" style="min-height: 75px">
+      <select>
+        <option *ngFor="let i of country">{{i}}</option>
+      </select>
+    </div>
+    <div style="min-height: 75px">
+      <!--  Age  -->
+      <input type="number" class="form-control" formControlName="age"
+             placeholder="Age enter">
+      <div *ngIf="age && age.invalid && (age.dirty || age.touched)"
+           class="alert-danger">
+        <label *ngIf="age.errors?.['required']">
+          Age is required.
+        </label>
+        <label *ngIf="age.errors?.['min']">
+          Age min 18.
+        </label>
+      </div>
+    </div>
+
+    <div style="min-height: 75px">
+      <!--  Gender  -->
+      <input type="radio" name="gender" value="Male" checked><span>Male</span>
+      <input type="radio" name="gender" value="Female"><span>Female</span>
+    </div>
+
+    <div style="min-height: 75px">
+      <!--  Phone  -->
+      <input type="text" class="form-control" formControlName="age"
+             placeholder="Phone enter">
+      <div *ngIf="age && age.invalid && (age.dirty || age.touched)"
+           class="alert-danger">
+        <label *ngIf="age.errors?.['required']">
+          Phone is required.
+        </label>
+        <label *ngIf="age.errors?.['pattern']">
+          Phone is invalid.
+        </label>
+      </div>
+    </div>
+  </form>
+</div>
