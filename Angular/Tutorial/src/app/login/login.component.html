@@ -1,0 +1,34 @@
+<div class="container-fluid col-3">
+  <h2 class="pt-lg-5 mt-5" >Login</h2>
+  <hr>
+  <form [formGroup]="loginForm">
+    <div style="min-height: 75px">
+      <!--  Email  -->
+      <input type="email" class="form-control" formControlName="email" placeholder="Email enter">
+      <div *ngIf="email && email.invalid && (email.dirty || email.touched)"
+           class="alert-danger">
+        <label *ngIf="email.errors?.['required']">
+          Email is required.
+        </label>
+        <label *ngIf="email.errors?.['pattern']">
+          Email is invalid.
+        </label>
+      </div>
+    </div>
+
+    <div style="min-height: 75px">
+      <!--  Password  -->
+      <input type="password" class="form-control" formControlName="password" placeholder="Password enter">
+      <div *ngIf="password && password.invalid && (password.dirty || password.touched)"
+           class="alert-danger">
+        <label *ngIf="password.errors?.['required']">
+          Password is required.
+        </label>
+        <label *ngIf="password.errors?.['minlength']">
+          Password must be at least 6 characters long.
+        </label>
+      </div>
+    </div>
+
+  </form>
+</div>
