@@ -1,0 +1,13 @@
+<hr>
+<h2>Dictionary</h2>
+<table>
+  <tr>
+    <th>Word</th>
+<!--    <th>Mean</th>-->
+  </tr>
+  <tr *ngFor="let i of lsWord">
+    <td><a [routerLink]="['/dictionary', i.word]">{{i.word}}</a></td>
+  </tr>
+</table>
+<hr>
+<router-outlet></router-outlet>

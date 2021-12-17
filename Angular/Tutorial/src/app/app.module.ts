@@ -11,6 +11,8 @@ import { YoutubePlaylistComponent } from './youtube-playlist/youtube-playlist.co
 import { YoutubePlayerComponent } from './youtube-player/youtube-player.component';
 import { ProductListComponent } from './product/product-list/product-list.component';
 import { ProductCreateComponent } from './product/product-create/product-create.component';
+import { DictionaryPageComponent } from './word/dictionary-page/dictionary-page.component';
+import { DictionaryDetailComponent } from './word/dictionary-detail/dictionary-detail.component';
 
 @NgModule({
   declarations: [
@@ -22,6 +24,8 @@ import { ProductCreateComponent } from './product/product-create/product-create.
     YoutubePlayerComponent,
     ProductListComponent,
     ProductCreateComponent,
+    DictionaryPageComponent,
+    DictionaryDetailComponent,
   ],
     imports: [
         BrowserModule,
