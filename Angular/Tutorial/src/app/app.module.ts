@@ -9,6 +9,8 @@ import { LoginComponent } from './login/login.component';
 import { TimelinesComponent } from './timelines/timelines.component';
 import { YoutubePlaylistComponent } from './youtube-playlist/youtube-playlist.component';
 import { YoutubePlayerComponent } from './youtube-player/youtube-player.component';
+import { ProductListComponent } from './product/product-list/product-list.component';
+import { ProductCreateComponent } from './product/product-create/product-create.component';
 
 @NgModule({
   declarations: [
@@ -18,6 +20,8 @@ import { YoutubePlayerComponent } from './youtube-player/youtube-player.componen
     TimelinesComponent,
     YoutubePlaylistComponent,
     YoutubePlayerComponent,
+    ProductListComponent,
+    ProductCreateComponent,
   ],
     imports: [
         BrowserModule,
