@@ -1,15 +1,23 @@
-<h1>Danh sách sản phẩm</h1>
-<table>
-  <tr>
-    <td>STT</td>
-    <td>Tên</td>
-    <td>Giá</td>
-    <td>Mô tả</td>
+<hr>
+<h1>List Product</h1>
+<br>
+<table class="table">
+  <tr class="table-success bg-secondary text-light fw-bold">
+    <td>Number</td>
+    <td>Name</td>
+    <td>Price</td>
+    <td>Description</td>
+    <td class="text-center">Action</td>
   </tr>
   <tr *ngFor="let product of products; index as i">
     <td>{{i + 1}}</td>
     <td>{{product.name}}</td>
     <td>{{product.price}}</td>
     <td>{{product.description}}</td>
+    <td class="text-center">
+      <label class="link-primary" [routerLink]="['/product/update', product.id]">Edit</label>
+      |
+      <label class="link-primary" [routerLink]="['/product/delete', product.id]">Delete</label>
+    </td>
   </tr>
 </table>

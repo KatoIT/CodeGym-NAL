@@ -39,7 +39,38 @@ export class ProductService {
   getAll() {
     return this.products;
   }
+
   saveProduct(product: Product) {
     this.products.push(product);
   }
+
+  findProductById(id: number) {
+    for (let pro of this.products) {
+      if (id == pro.id) {
+        return pro;
+      }
+    }
+    return undefined;
+  }
+
+  updateById(product: Product) {
+    for (let index in this.products) {
+      if (product.id == this.products[index].id) {
+        this.products[index] = product;
+        return true;
+      }
+    }
+    return false;
+  }
+
+  deleteById(product: Product) {
+    const index = this.products.indexOf(product, 0);
+    if (index > -1) {
+      this.products.splice(index, 1);
+      return true;
+    } else {
+      return false;
+    }
+  }
+
 }

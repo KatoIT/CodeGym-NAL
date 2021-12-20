@@ -1,9 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {DictionaryService} from "../../service/dictionary.service";
-
 import {ParamMap, ActivatedRoute} from "@angular/router";
-import {SongService} from "../../service/song.service";
-import {DomSanitizer} from "@angular/platform-browser";
 
 @Component({
   selector: 'app-dictionary-detail',
@@ -16,8 +13,7 @@ export class DictionaryDetailComponent implements OnInit {
 
   constructor(
     private dictionaryService: DictionaryService,
-    private activatedRoute: ActivatedRoute,
-    private domSanitizer: DomSanitizer
+    private activatedRoute: ActivatedRoute
   ) {
   }
 

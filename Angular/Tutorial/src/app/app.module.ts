@@ -13,6 +13,10 @@ import { ProductListComponent } from './product/product-list/product-list.compon
 import { ProductCreateComponent } from './product/product-create/product-create.component';
 import { DictionaryPageComponent } from './word/dictionary-page/dictionary-page.component';
 import { DictionaryDetailComponent } from './word/dictionary-detail/dictionary-detail.component';
+import { ProductUpdateComponent } from './product/product-update/product-update.component';
+import { ProductDeleteComponent } from './product/product-delete/product-delete.component';
+import { ParentComponent } from './parent/parent.component';
+import { ChildComponent } from './child/child.component';
 
 @NgModule({
   declarations: [
@@ -26,6 +30,10 @@ import { DictionaryDetailComponent } from './word/dictionary-detail/dictionary-d
     ProductCreateComponent,
     DictionaryPageComponent,
     DictionaryDetailComponent,
+    ProductUpdateComponent,
+    ProductDeleteComponent,
+    ParentComponent,
+    ChildComponent,
   ],
     imports: [
         BrowserModule,

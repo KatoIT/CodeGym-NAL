@@ -7,6 +7,8 @@ import {ProductListComponent} from "./product/product-list/product-list.componen
 import {ProductCreateComponent} from "./product/product-create/product-create.component";
 import {DictionaryPageComponent} from "./word/dictionary-page/dictionary-page.component";
 import {DictionaryDetailComponent} from "./word/dictionary-detail/dictionary-detail.component";
+import {ProductUpdateComponent} from "./product/product-update/product-update.component";
+import {ProductDeleteComponent} from "./product/product-delete/product-delete.component";
 
 const routes: Routes = [
   {
@@ -33,6 +35,20 @@ const routes: Routes = [
   {
     path: 'product/create',
     component: ProductCreateComponent
+  },
+  {
+    path: 'product/update',
+    children: [{
+      path: ':idProduct',
+      component: ProductUpdateComponent
+    }]
+  },
+  {
+    path: 'product/delete',
+    children: [{
+      path: ':idProduct',
+      component: ProductDeleteComponent
+    }]
   },
   {
     path: 'dictionary',
