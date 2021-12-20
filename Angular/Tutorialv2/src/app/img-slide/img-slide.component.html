@@ -1,0 +1,9 @@
+<div class="gallery-container">
+  <div class="gallery-item"
+       [style.max-width.%]="100" [style.max-height.%]="80">
+    <app-img-slider [src]="listSrc[index]"></app-img-slider>
+  </div>
+  <button (click)="previous()">Previous</button>
+  <hr>
+  <button (click)="next()">Next</button>
+</div>
