@@ -42,4 +42,11 @@ export class ProductUpdateComponent implements OnInit {
     }
   }
 
+  next() {
+    this.router.navigate(['/edit', this.product.id + 1], {
+      queryParams: {id: 4, age: 8},
+      queryParamsHandling: "merge"
+    })
+  }
+
 }

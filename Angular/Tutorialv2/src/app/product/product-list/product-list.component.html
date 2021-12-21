@@ -1,6 +1,8 @@
 <hr>
 <h1>List Product</h1>
 <br>
+<a routerLink="/product/create">Tạo mới sản phẩm</a>
+<br>
 <table class="table">
   <tr class="table-success bg-secondary text-light fw-bold">
     <td>Number</td>
@@ -15,7 +17,8 @@
     <td>{{product.price}}</td>
     <td>{{product.description}}</td>
     <td class="text-center">
-      <label class="link-primary" [routerLink]="['/edit', product.id]">Edit</label>
+<!--      <label class="link-primary" [routerLink]="['/edit', product.id]">Edit</label>-->
+      <label class="link-primary" (click)="edit(product.id)" >Edit</label>
       |
       <label class="link-primary" [routerLink]="['/delete', product.id]">Delete</label>
     </td>
