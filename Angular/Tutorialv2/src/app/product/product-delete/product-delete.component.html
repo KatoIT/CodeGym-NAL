@@ -1,9 +1,21 @@
-<hr>
-<h2>You want delete <span class="text-danger fw-bold">Product?</span></h2>
-<br>
-<label>Name: {{product.name}}</label><br>
-<label>Price: {{product.price}}</label><br>
-<label>Description: {{product.description}}</label>
-<br>
-<br>
-<button class="btn-outline-danger" (click)="delete()">Delete now</button>
+<h1>Tạo sản phẩm mới</h1>
+<form [formGroup]="productForm" (ngSubmit)="deleteProduct(id)">
+  <table>
+    <tr>
+      <td>Name:</td>
+      <td><input type="text" formControlName="name"></td>
+    </tr>
+    <tr>
+      <td>Price</td>
+      <td><input type="number" formControlName="price"></td>
+    </tr>
+    <tr>
+      <td>Description</td>
+      <td><input type="text" formControlName="description"></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><button>Update now</button></td>
+    </tr>
+  </table>
+</form>

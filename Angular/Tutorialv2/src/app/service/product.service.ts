@@ -1,76 +1,39 @@
 import {Injectable} from '@angular/core';
 import {Product} from "../model/product";
+import {environment} from "../../environments/environment";
+import {Observable} from "rxjs";
+import {HttpClient} from "@angular/common/http";
+
+const API_URL = `${environment.apiUrl}`;
 
 @Injectable({
   providedIn: 'root'
 })
 export class ProductService {
 
-  constructor() {
+  constructor(
+    private http: HttpClient
+  ) {
   }
 
-  products: Product[] = [{
-    id: 1,
-    name: 'IPhone 12',
-    price: 2400000,
-    description: 'New'
-  }, {
-    id: 2,
-    name: 'IPhone 11',
-    price: 1560000,
-    description: 'Like new'
-  }, {
-    id: 3,
-    name: 'IPhone X',
-    price: 968000,
-    description: '97%'
-  }, {
-    id: 4,
-    name: 'IPhone 8',
-    price: 7540000,
-    description: '98%'
-  }, {
-    id: 5,
-    name: 'IPhone 11 Pro',
-    price: 1895000,
-    description: 'Like new'
-  }];
-
-  getAll() {
-    return this.products;
+  getAll(): Observable<Product[]> {
+    return this.http.get<Product[]>(API_URL + '/product');
   }
 
-  saveProduct(product: Product) {
-    this.products.push(product);
+  saveProduct(product: Product): Observable<Product> {
+    return this.http.post<Product>(API_URL + '/product', product);
   }
 
-  findProductById(id: number) {
-    for (let pro of this.products) {
-      if (id == pro.id) {
-        return pro;
-      }
-    }
-    return undefined;
+  findById(id: number): Observable<Product> {
+    return this.http.get<Product>(`${API_URL}/product/${id}`);
   }
 
-  updateById(product: Product) {
-    for (let index in this.products) {
-      if (product.id == this.products[index].id) {
-        this.products[index] = product;
-        return true;
-      }
-    }
-    return false;
+  updateProduct(id: number, Product: Product): Observable<Product> {
+    return this.http.put<Product>(`${API_URL}/product/${id}`, Product);
   }
 
-  deleteById(product: Product) {
-    const index = this.products.indexOf(product, 0);
-    if (index > -1) {
-      this.products.splice(index, 1);
-      return true;
-    } else {
-      return false;
-    }
+  deleteProduct(id: number): Observable<Product> {
+    return this.http.delete<Product>(`${API_URL}/product/${id}`);
   }
 
 }

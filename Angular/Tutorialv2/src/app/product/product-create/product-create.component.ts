@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {FormControl, FormGroup} from "@angular/forms";
 import {ProductService} from "../../service/product.service";
 
@@ -15,14 +15,20 @@ export class ProductCreateComponent implements OnInit {
     description: new FormControl(),
   });
 
-  constructor(private productService: ProductService) { }
+  constructor(private productService: ProductService) {
+  }
 
   ngOnInit(): void {
   }
 
   submit() {
     const product = this.productForm.value;
-    this.productService.saveProduct(product);
+    this.productService.saveProduct(product).subscribe(product => {
+      this.productForm.reset();
+      alert('Tạo thành công');
+    }, e => {
+      console.log(e);
+    });
     this.productForm.reset();
   }
 

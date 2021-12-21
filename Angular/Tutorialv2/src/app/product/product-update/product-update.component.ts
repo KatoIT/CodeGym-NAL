@@ -10,7 +10,8 @@ import {FormControl, FormGroup} from "@angular/forms";
 })
 export class ProductUpdateComponent implements OnInit {
   product: any = {};
-  productForm: FormGroup;
+  productForm: FormGroup = new FormGroup({});
+  id: any = 0;
 
   constructor(
     private productService: ProductService,
@@ -18,14 +19,8 @@ export class ProductUpdateComponent implements OnInit {
     private router: Router
   ) {
     this.activatedRoute.paramMap.subscribe((paramMap: ParamMap) => {
-      const id: any = paramMap.get('id');
-      this.product = this.productService.findProductById(id);
-    });
-    this.productForm = new FormGroup({
-      id: new FormControl(this.product.id),
-      name: new FormControl(this.product.name),
-      price: new FormControl(this.product.price),
-      description: new FormControl(this.product.description),
+      this.id = paramMap.get('id');
+      this.getProduct(this.id)
     });
   }
 
@@ -34,12 +29,23 @@ export class ProductUpdateComponent implements OnInit {
 
   }
 
-  update() {
-    if (this.productService.updateById(this.productForm.value)) {
-      this.router.navigate(['/product/list']);
-    } else {
-      alert("Update Fail!");
-    }
+  getProduct(id: number) {
+    return this.productService.findById(id).subscribe(product => {
+      this.productForm = new FormGroup({
+        name: new FormControl(product.name),
+        price: new FormControl(product.price),
+        description: new FormControl(product.description),
+      });
+    });
+  }
+
+  updateProduct(id: number) {
+    const product = this.productForm.value;
+    this.productService.updateProduct(id, product).subscribe(() => {
+      alert('Cập nhật thành công');
+    }, e => {
+      console.log(e);
+    });
   }
 
 }
