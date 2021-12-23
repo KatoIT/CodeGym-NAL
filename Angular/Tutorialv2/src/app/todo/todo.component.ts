@@ -3,8 +3,6 @@ import {FormControl} from "@angular/forms";
 import {Todo} from "../todo";
 import {TodoService} from "../service/todo.service";
 
-let _id = 1;
-
 @Component({
   selector: 'app-todo',
   templateUrl: './todo.component.html',
@@ -19,38 +17,54 @@ export class TodoComponent implements OnInit {
   ) {
 
   }
-  getAll(){
+
+  getAll() {
     this.todoService.getAll().subscribe(value => {
       this.todos = value;
     });
   }
+
   ngOnInit() {
     this.getAll();
   }
 
-  toggleTodo(i: number) {
-    this.todos[i].complete = !this.todos[i].complete;
+  toggleTodo(id: number | undefined) {
+    if (id != undefined) {
+      const todo = this.todos.find(value => value.id == id);
+      if (todo != undefined) {
+        todo.complete = !todo.complete;
+        this.todoService.updateTodo(id, todo).subscribe();
+      }
+    }
   }
 
-  change() {
-    // const value = this.content.value;
-    // if (value) {
-    //   const todo: Todo = {
-    //     id: _id++,
-    //     content: value,
-    //     complete: false
-    //   };
-    //   this.todos.push(todo);
-    //   this.content.reset();
-    // }
-    const todo = this.content.value;
+  saveTodo() {
+    console.log("Save ")
+    const todo: Todo = {
+      content: this.content.value,
+      complete: false
+    }
     this.todoService.saveTodo(todo).subscribe(() => {
       this.content.reset();
-      alert('Tạo thành công');
+      this.getAll()
     }, e => {
       console.log(e);
     });
     this.content.reset();
+  }
+
+  deleteTodo(id: number | undefined) {
+    console.log("Delete ", id)
+    if (id != undefined) {
+      const todo = this.todos.find(value => value.id == id);
+      if (todo != undefined) {
+        this.todoService.deleteTodo(id).subscribe(() => {
+          this.getAll()
+        }, e => {
+          console.log(e);
+        });
+      }
+    }
   }
 
 }

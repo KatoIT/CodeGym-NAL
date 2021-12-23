@@ -3,7 +3,7 @@ import {environment} from "../../environments/environment";
 import {HttpClient} from "@angular/common/http";
 import {Todo} from "../todo";
 import {Observable} from "rxjs";
-const API_URL = '$(environment.apiUrl)';
+const API_URL = `${environment.apiUrl}`;
 @Injectable({
   providedIn: 'root'
 })
@@ -25,7 +25,7 @@ export class TodoService {
   }
 
   updateTodo(id: number, Todo: Todo): Observable<Todo> {
-    return this.http.put<Todo>(`${API_URL}/todo/${id}`, Todo);
+    return this.http.patch<Todo>(`${API_URL}/todo/${id}`, Todo);
   }
 
   deleteTodo(id: number): Observable<Todo> {
