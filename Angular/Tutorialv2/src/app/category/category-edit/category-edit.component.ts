@@ -10,7 +10,9 @@ import {ActivatedRoute, ParamMap} from "@angular/router";
 })
 export class CategoryEditComponent implements OnInit {
 
-  categoryForm: FormGroup = new FormGroup({});
+  categoryForm: FormGroup = new FormGroup({
+    name: new FormControl()
+  });
   id: any = 0;
 
   constructor(private categoryService: CategoryService,
@@ -24,15 +26,16 @@ export class CategoryEditComponent implements OnInit {
   ngOnInit() {
   }
 
-  getCategory(id: number) {
-    return this.categoryService.findById(id).subscribe(category => {
+  getCategory(id: string) {
+    return this.categoryService.findById(id).subscribe(data => {
+      const category = data.data
       this.categoryForm = new FormGroup({
         name: new FormControl(category.name),
       });
     });
   }
 
-  updateCategory(id: number) {
+  updateCategory(id: string) {
     const category = this.categoryForm.value;
     this.categoryService.updateCategory(id, category).subscribe(() => {
       alert('Cập nhật thành công');
@@ -40,5 +43,6 @@ export class CategoryEditComponent implements OnInit {
       console.log(e);
     });
   }
+
 
 }

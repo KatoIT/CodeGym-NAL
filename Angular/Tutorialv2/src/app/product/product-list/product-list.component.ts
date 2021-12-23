@@ -24,13 +24,13 @@ export class ProductListComponent implements OnInit {
   getAll() {
     this.productService.getAll().subscribe(products => {
       console.log(products)
-      this.products =  products;
+      this.products =  products.data;
     })
   }
 
-  edit(id: number | undefined) {
-    this.router.navigate(['/edit', id], {
-      queryParams: {id: id, name: 'abc'}
-    })
-  }
+  // edit(id: number | undefined) {
+  //   this.router.navigate(['/edit', id], {
+  //     queryParams: {id: id, name: 'abc'}
+  //   })
+  // }
 }

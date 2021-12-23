@@ -2,21 +2,31 @@
 <form [formGroup]="productForm" (ngSubmit)="updateProduct(id)">
   <table>
     <tr>
-      <td>Name:</td>
-      <td><input type="text" formControlName="name"></td>
+      <td class="col-5 fw-bold">Name</td>
+      <td class="pt-2"><input type="text" formControlName="name"></td>
     </tr>
     <tr>
-      <td>Price</td>
-      <td><input type="number" formControlName="price"></td>
+      <td class="col-5 fw-bold">Price</td>
+      <td class="pt-2"><input type="number" formControlName="price"></td>
     </tr>
     <tr>
-      <td>Description</td>
-      <td><input type="text" formControlName="description"></td>
+      <td class="col-5 fw-bold">Description</td>
+      <td class="pt-2"><input type="text" formControlName="description"></td>
     </tr>
     <tr>
+      <td>Danh mục sản phẩm</td>
+      <td><select formControlName="category">
+        <option disabled>Chọn danh mục sản phẩm</option>
+        <option *ngFor="let category of categories" [value]="category._id">{{category.name}}</option>
+      </select></td>
+    </tr>
+
+    <tr class="pt-3">
       <td></td>
-      <td><button>Update now</button></td>
+      <td class="pt-3">
+        <button class="btn btn-success fw-bold">Update now</button>
+      </td>
     </tr>
   </table>
 </form>
-<button (click)="next()">next</button>
+<!--<button (click)="next()">next</button>-->

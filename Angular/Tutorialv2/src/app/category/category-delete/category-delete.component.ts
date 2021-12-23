@@ -10,7 +10,9 @@ import {ActivatedRoute, ParamMap, Router} from '@angular/router';
 })
 export class CategoryDeleteComponent implements OnInit {
 
-  categoryForm: FormGroup = new FormGroup({});
+  categoryForm: FormGroup = new FormGroup({
+    name: new FormControl()
+  });
   id: any = 0;
 
   constructor(private categoryService: CategoryService,
@@ -25,15 +27,16 @@ export class CategoryDeleteComponent implements OnInit {
   ngOnInit() {
   }
 
-  getCategory(id: number) {
-    return this.categoryService.findById(id).subscribe(category => {
+  getCategory(id: string) {
+    return this.categoryService.findById(id).subscribe(data => {
+      const category = data.data
       this.categoryForm = new FormGroup({
         name: new FormControl(category.name),
       });
     });
   }
 
-  deleteCategory(id: number) {
+  deleteCategory(id: string) {
     this.categoryService.deleteCategory(id).subscribe(() => {
       this.router.navigate(['/category/list']);
     }, e => {

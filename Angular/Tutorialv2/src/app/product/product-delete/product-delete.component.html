@@ -2,20 +2,22 @@
 <form [formGroup]="productForm" (ngSubmit)="deleteProduct(id)">
   <table>
     <tr>
-      <td>Name:</td>
-      <td><input type="text" formControlName="name"></td>
+      <td class="col-5 fw-bold">Name</td>
+      <td class="pt-2"><input type="text" readonly="readonly" formControlName="name"></td>
     </tr>
     <tr>
-      <td>Price</td>
-      <td><input type="number" formControlName="price"></td>
+      <td class="col-5 fw-bold">Price</td>
+      <td class="pt-2"><input type="number" readonly="readonly" formControlName="price"></td>
     </tr>
     <tr>
-      <td>Description</td>
-      <td><input type="text" formControlName="description"></td>
+      <td class="col-5 fw-bold">Description</td>
+      <td class="pt-2"><input type="text" readonly="readonly" formControlName="description"></td>
     </tr>
-    <tr>
+    <tr class="pt-3">
       <td></td>
-      <td><button>Update now</button></td>
+      <td class="pt-3">
+        <button class="btn btn-warning fw-bold">Delete now</button>
+      </td>
     </tr>
   </table>
 </form>

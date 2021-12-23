@@ -10,7 +10,11 @@ import {FormControl, FormGroup} from "@angular/forms";
 })
 export class ProductDeleteComponent implements OnInit {
   product: any = {};
-  productForm = new FormGroup({});
+  productForm = new FormGroup({
+    name: new FormControl(),
+    price: new FormControl(),
+    description: new FormControl(),
+  });
   id: any = 0;
 
   constructor(
@@ -29,8 +33,9 @@ export class ProductDeleteComponent implements OnInit {
 
   }
 
-  getProduct(id: number) {
-    return this.productService.findById(id).subscribe(product => {
+  getProduct(id: string) {
+    return this.productService.findById(id).subscribe(data => {
+      const product = data.data
       this.productForm = new FormGroup({
         name: new FormControl(product.name),
         price: new FormControl(product.price),
@@ -39,7 +44,7 @@ export class ProductDeleteComponent implements OnInit {
     });
   }
 
-  deleteProduct(id: number) {
+  deleteProduct(id: string) {
     const product = this.productForm.value;
     this.productService.deleteProduct(id).subscribe(() => {
       this.router.navigate(['/product/list']);

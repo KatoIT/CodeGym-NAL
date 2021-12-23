@@ -14,24 +14,24 @@ export class CategoryService {
   ) {
   }
 
-  getAll(): Observable<Category[]> {
-    return this.http.get<Category[]>(API_URL + '/categories');
+  getAll(): Observable<any> {
+    return this.http.get<any>(API_URL + '/categories');
   }
 
-  saveCategory(category: Category): Observable<Category> {
-    return this.http.post<Category>(API_URL + '/categories', category);
+  saveCategory(category: Category): Observable<any> {
+    return this.http.post<any>(API_URL + '/categories', category);
   }
 
-  findById(id: number): Observable<Category> {
-    return this.http.get<Category>(`${API_URL}/categories/${id}`);
+  findById(id: string): Observable<any> {
+    return this.http.get<any>(`${API_URL}/categories/${id}`);
   }
 
-  updateCategory(id: number, category: Category): Observable<Category> {
-    return this.http.put<Category>(`${API_URL}/categories/${id}`, category);
+  updateCategory(id: string, category: Category): Observable<any> {
+    return this.http.patch<any>(`${API_URL}/categories/${id}`, category);
   }
 
-  deleteCategory(id: number): Observable<Category> {
-    return this.http.delete<Category>(`${API_URL}/categories/${id}`);
+  deleteCategory(id: string): Observable<any> {
+    return this.http.delete<any>(`${API_URL}/categories/${id}`);
   }
 
 }

@@ -1,15 +1,24 @@
-<h1>Danh sách danh mục sản phẩm</h1>
-<a routerLink="/category/create">Tạo mới danh mục</a>
-<table class="table">
-  <tr>
-    <td>STT</td>
-    <td>Tên</td>
-    <td></td>
-  </tr>
-  <tr *ngFor="let category of categories; index as i">
-    <td>{{i + 1}}</td>
-    <td>{{category.name}}</td>
-    <td><a [routerLink]="['/category/edit',category.id]">Edit</a></td>
-    <td><a [routerLink]="['/category/delete',category.id]">Delete</a></td>
-  </tr>
-</table>
+<div class="mt-3">
+  <h1>Danh sách danh mục sản phẩm</h1>
+  <button class="btn btn-primary fw-bold text-light mt-5" routerLink="/category/create">Tạo mới danh mục</button>
+  <div class="mt-3">
+    <table class="table table-borderless">
+      <tr class="p-3 border bg-secondary text-light">
+        <td class="fw-bold text-center">STT</td>
+        <td class="fw-bold ps-3">Tên</td>
+        <td class="text-center fw-bold"> Action</td>
+      </tr>
+      <tr class="pt-3" *ngFor="let category of categories; index as i">
+        <td class="col-1 border text-center">{{i + 1}}</td>
+        <td class="border ps-3">{{category.name}}</td>
+        <td class="col-3 border  text-center">
+          <label class="btn-outline-primary border rounded-circle"
+                 [routerLink]="['/category/edit',category._id]">Edit</label>
+          &nbsp;
+          <label class="btn-outline-danger border rounded-circle"
+                 [routerLink]="['/category/delete',category._id]">Delete</label>
+        </td>
+      </tr>
+    </table>
+  </div>
+</div>
