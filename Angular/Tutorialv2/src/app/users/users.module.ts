@@ -6,6 +6,7 @@ import { UserComponent } from './user/user.component';
 import { FriendsComponent } from './friends/friends.component';
 import { FromUserComponent } from './from-user/from-user.component';
 import { MessageBoardComponent } from './message-board/message-board.component';
+import {UsersComponent} from "./users.component";
 
 
 @NgModule({
