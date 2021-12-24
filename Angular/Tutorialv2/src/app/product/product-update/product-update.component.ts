@@ -25,6 +25,7 @@ export class ProductUpdateComponent implements OnInit {
     private productService: ProductService,
     private activatedRoute: ActivatedRoute,
     private categoryService: CategoryService,
+    private router: Router
   ) {
     this.activatedRoute.paramMap.subscribe((paramMap: ParamMap) => {
       this.id = paramMap.get('id');
@@ -45,14 +46,16 @@ export class ProductUpdateComponent implements OnInit {
         name: new FormControl(product.name),
         price: new FormControl(product.price),
         description: new FormControl(product.description),
-        category: new FormControl(product.category)
+        category: new FormControl(product.categories[0])
       });
     });
   }
 
   updateProduct(id: string) {
     const product = this.productForm.value;
+    product.categories = [product.category];
     this.productService.updateProduct(id, product).subscribe(() => {
+      this.router.navigate(['/product/list']);
       alert('Cập nhật thành công');
     }, e => {
       console.log(e);

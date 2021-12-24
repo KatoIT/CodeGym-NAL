@@ -32,9 +32,7 @@ export class ProductCreateComponent implements OnInit {
 
   submit() {
     const product = this.productForm.value;
-    console.log(product)
-    product.category = [product.category];
-    console.log(product)
+    product.categories = [product.category];
     this.productService.saveProduct(product).subscribe(product => {
       this.productForm.reset();
       alert('Tạo thành công');
