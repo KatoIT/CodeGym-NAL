@@ -1,0 +1,66 @@
+{
+  "categories": [
+    {
+      "name": "Iphone",
+      "id": 1
+    },
+    {
+      "id": 2,
+      "name": "SamSung"
+    },
+    {
+      "id": 3,
+      "name": "Xiaomi"
+    },
+    {
+      "id": 4,
+      "name": "Oppo"
+    }
+  ],
+  "products": [
+    {
+      "id": "1abc",
+      "name": "SamSung s10",
+      "price": 10000000,
+      "description": "Samsung ",
+      "category": 2
+    },
+    {
+      "id": "2def",
+      "name": "Iphone 13",
+      "price": 30000000,
+      "description": "Apple ",
+      "category": 1
+    },
+    {
+      "id": "3ghi",
+      "name": "Redmi K20",
+      "price": 6100000,
+      "description": "Xiaomi",
+      "category": 3
+    },
+    {
+      "id": "vqqLy4m",
+      "name": "1",
+      "price": 1,
+      "description": "1"
+    }
+  ],
+  "todo": [
+    {
+      "content": "Go to ",
+      "complete": false,
+      "id": 1
+    },
+    {
+      "content": "ok con dê",
+      "complete": false,
+      "id": 2
+    },
+    {
+      "content": "Về thôi",
+      "complete": false,
+      "id": 3
+    }
+  ]
+}
