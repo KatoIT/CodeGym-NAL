@@ -1,0 +1,21 @@
+<div *ngIf="userLogn.userId != message.userId" class="d-flex justify-content-start mb-4" >
+  <div class="img_cont_msg">
+    <img [src]="user.avatar" class="rounded-circle user_img_msg">
+  </div>
+  <div class="msg_cotainer" data-bs-toggle="tooltip" data-bs-placement="top" [title]="user.nickName">
+    {{message.content}}
+    <span class="msg_time">8:40 AM</span>
+  </div>
+<!--  <span class="">{{user.nickName}}</span>-->
+</div>
+<div *ngIf="userLogn.userId == message.userId" class="d-flex justify-content-end mb-4">
+  <div class="msg_cotainer_send">
+    {{message.content}}
+<!--    <span class="msg_time_send">9:05 AM, Today</span>-->
+  </div>
+  <div class="img_cont_msg">
+    <img
+      [src]="user.avatar"
+      class="rounded-circle user_img_msg">
+  </div>
+</div>

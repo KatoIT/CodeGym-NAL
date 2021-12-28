@@ -1,4 +1,5 @@
 export interface UserInGroup {
   userId?: number,
-  groupId?: number
+  groupId?: number,
+  nickName?: string,
 }

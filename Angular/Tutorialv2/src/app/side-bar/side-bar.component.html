@@ -1,0 +1,46 @@
+<!--<div class="col-3 col-sm-2 col-md-2 col-xl-4 chat ">-->
+<div class="card mb-sm-3 mb-md-0 contacts_card" style="height: 98%">
+  <div class="card-header">
+    <!--     Avatar     -->
+    <div class="d-flex bd-highlight mt-2 mb-3">
+      <div class="img_cont">
+        <img [src]="user.avatar" class="rounded-circle user_img">
+        <span class="online_icon"></span>
+      </div>
+      <div class="user_info">
+        <span>{{user.nickName}}</span>
+        <p>Online</p>
+      </div>
+      <span id="action_add_btn" class="btn" (click)="showMenu()"><i class="fas fa-plus"></i></span>
+      <div class="action_menu" *ngIf="menuShow">
+        <ul>
+          <li><i class="fas fa-user-circle"></i> View profile</li>
+          <li (click)="addGroup()"><i class="fas fa-users"></i> Join to Group</li>
+          <li><i class="fas fa-plus"></i> Create to group</li>
+          <li><i class="fas fa-ban"></i> Exit</li>
+        </ul>
+      </div>
+    </div>
+    <!--     Input Search     -->
+    <div class="input-group" [formGroup]="inputSearch">
+      <input type="text" placeholder="Search..." name="" class="form-control search" formControlName="text">
+      <div class="input-group-lg">
+        <span class="input-group-text search_btn" (click)="searchGroup()"><i class="fas fa-search"></i></span>
+      </div>
+    </div>
+  </div>
+  <!--    SlideBar    -->
+  <div class="card-body contacts_body">
+    <!--    ui    -->
+    <div class="contacts">
+      <!-- UserGroup -->
+      <app-user-card *ngFor="let group of groups"
+                     [group]="group"
+                     [isSelect]="group.groupId==groupIdSelected"
+                     (click)="selectUser(group.groupId)"></app-user-card>
+    </div>
+  </div>
+  <div class="card-footer"></div>
+</div>
+
+<!--</div>-->

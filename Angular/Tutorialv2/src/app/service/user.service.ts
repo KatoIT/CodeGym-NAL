@@ -8,36 +8,32 @@ export class UserService {
   users: Users[] = [
     {
       userId: 0,
-      avatar: '',
-      nickName: 'KatoIT',
-      status: true
+      avatar: 'https://static.turbosquid.com/Preview/001292/481/WV/_D.jpg',
+      nickName: 'KatoIT'
     }, {
       userId: 1,
-      avatar: '',
-      nickName: 'User_01',
-      status: false
+      avatar: 'https://cdn3.iconfinder.com/data/icons/avatars-round-flat/33/avat-01-512.png',
+      nickName: 'User_01'
     }, {
       userId: 2,
-      avatar: '',
-      nickName: 'User_02',
-      status: true
+      avatar: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQNL_ZnOTpXSvhf1UaK7beHey2BX42U6solRA&usqp=CAU',
+      nickName: 'User_02'
     }, {
       userId: 3,
-      avatar: '',
-      nickName: 'User_03',
-      status: false
+      avatar: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSaRXYrOHpacR8gy4JAxpOzvTNpeNL6pAcMSA&usqp=CAU',
+      nickName: 'User_03'
     }, {
       userId: 4,
       avatar: '',
-      nickName: 'User_04',
-      status: true
+      nickName: 'User_04'
     }
   ]
+  user = this.users[0]
 
-  constructor() {
+    constructor() {
   }
 
-  findUserById(id: number) {
+  findUserById(id: number|undefined) {
     return this.users.find(value => value.userId === id)
   }
 
