@@ -10,22 +10,23 @@ body,html{
 }
 /* width */
 ::-webkit-scrollbar {
-  width: 10px;
+  width: 5px;
 }
 
 /* Track */
 ::-webkit-scrollbar-track {
-  background: #82CCDD;
+  background: #4C4D80;
 }
 
 /* Handle */
 ::-webkit-scrollbar-thumb {
-  background: #517685;
+  background: #ffffff;
+  border-radius: 2px;
 }
 
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
-  background: #6610F2;
+  background: #c110f2;
 }
 
 .chat {
@@ -186,7 +187,7 @@ body,html{
 
 .video_cam {
   margin-left: 50px;
-  margin-top: 5px;
+  margin-top: 25px;
 }
 
 .video_cam span {

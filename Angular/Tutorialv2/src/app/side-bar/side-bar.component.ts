@@ -12,13 +12,12 @@ import {UserService} from "../service/user.service";
 })
 export class SideBarComponent implements OnInit {
   inputSearch = new FormGroup({
-    text: new FormControl()
+    textSearch: new FormControl()
   });
-  groups: Groups[] = []
+  groupsOfUser: Groups[] = []
   groupIdSelected: number = -1;
-  userLogin: Users = {}
+  userLoggedIn: Users = {}
   menuShow: boolean = false;
-  private userId = 0;
 
   constructor(
     private groupService: GroupService,
@@ -29,21 +28,23 @@ export class SideBarComponent implements OnInit {
 
   ngOnInit(): void {
     // Get user Logged in
-    this.userService.userLoggedIn.subscribe(value => this.userLogin = value);
+    this.userService.userLoggedIn.subscribe(value => this.userLoggedIn = value);
     // Get Group by name Search
-    this.inputSearch.controls['text'].valueChanges.subscribe(value => {
+    this.inputSearch.controls['textSearch'].valueChanges.subscribe(value => {
       if (value == "") {
         this.getGroupByUserId();
       } else {
-        this.groups = this.groupService.getAll().filter(group => group.groupName?.toLowerCase().search(value.toLowerCase()) != -1)
+        this.groupsOfUser = this.groupService.getAll().filter(group => group.groupName?.toLowerCase().search(value.toLowerCase()) != -1)
       }
     })
+    //
+    this.groupService.groupIdSelected.subscribe(value => this.groupIdSelected = value)
   }
 
   getGroupByUserId() {
-    this.groups = this.groupService.groupsOfUser;
-    if (this.groups[0].groupId != undefined) {
-      this.groupIdSelected = this.groups[0].groupId;
+    this.groupsOfUser = this.groupService.groupsOfUser;
+    if (this.groupsOfUser[0].groupId != undefined) {
+      this.groupIdSelected = this.groupsOfUser[0].groupId;
       this.groupService.groupIdSelected.next(this.groupIdSelected);
     }
 
@@ -66,7 +67,7 @@ export class SideBarComponent implements OnInit {
   }
 
   searchGroup() {
-    this.groups = this.groupService.getAll().filter(value => value.groupName?.toLowerCase().search(this.inputSearch.value['text'].toLowerCase()) != -1);
+    this.groupsOfUser = this.groupService.getAll().filter(value => value.groupName?.toLowerCase().search(this.inputSearch.value['text'].toLowerCase()) != -1);
   }
 
   login(userId: number) {

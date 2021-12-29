@@ -9,6 +9,7 @@ import {Users} from "../model/users";
   providedIn: 'root'
 })
 export class GroupService {
+  // Data
   groupsAll: Groups[] = [
     {
       groupId: 0,
@@ -42,11 +43,11 @@ export class GroupService {
       groupId: 0,
       userId: 0,
       nickName: 'KatoIT'
-    },{
+    }, {
       groupId: 0,
       userId: 1,
       nickName: 'User_01'
-    },{
+    }, {
       groupId: 0,
       userId: 2,
       nickName: 'User_02'
@@ -80,6 +81,7 @@ export class GroupService {
       nickName: 'KatoIT'
     }
   ]
+  // Variable
   groupIdSelected = new BehaviorSubject<number>(-1)
   groupsOfUser: Groups[] = [];
 
@@ -90,7 +92,7 @@ export class GroupService {
   }
 
   findGroupByUserId() {
-    this.groupsOfUser.splice(0, this.groupsOfUser.length)
+    this.groupsOfUser = [];
     for (let inGroup of this.userInGroup) {
       if (this.userService.userLoggedIn.value.userId == inGroup.userId) {
         let gr = this.groupsAll.find(value => value.groupId == inGroup.groupId);
@@ -98,6 +100,9 @@ export class GroupService {
           this.groupsOfUser.push(gr);
         }
       }
+    }
+    if (this.groupsOfUser[0].groupId != undefined) {
+      this.groupIdSelected.next(this.groupsOfUser[0].groupId)
     }
   }
 
@@ -117,11 +122,14 @@ export class GroupService {
     let index = this.userInGroup.findIndex(value =>
       value.userId === this.userService.userLoggedIn.value.userId
       && value.groupId === this.groupIdSelected.value);
+    // Delete User in array 'userInGroup'
     this.userInGroup.splice(index, 1);
+    // Delete Group in array 'groupOfUser'
     this.groupsOfUser.splice(
       this.groupsOfUser.findIndex(
         value => value.groupId === this.groupIdSelected.value),
       1)
+    // Select first group on array 'groupsOfUser'
     if (this.groupsOfUser[0].groupId != undefined) {
       this.groupIdSelected.next(this.groupsOfUser[0].groupId)
     }
@@ -138,12 +146,12 @@ export class GroupService {
   }
 
   findNickNameById(userId: number | undefined) {
-    if (userId === -404){
+    if (userId === -404) {
       return "Bot"
     }
     let nickName = this.userInGroup.find(value => value.groupId === this.groupIdSelected.value && value.userId === userId);
     if (nickName != undefined)
       return nickName.nickName
-    return "No Name";
+    return "The user has left the group";
   }
 }

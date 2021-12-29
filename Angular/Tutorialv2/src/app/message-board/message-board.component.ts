@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
 import {MessageService} from "../service/message.service";
 import {Groups} from "../model/groups";
 import {Message} from "../model/message";
@@ -21,6 +21,7 @@ export class MessageBoardComponent implements OnInit {
     msg: new FormControl()
   })
   joined = false;
+  @ViewChild("messageContainer") mContainer: ElementRef = new ElementRef<number>(1);
 
   constructor(
     private messageService: MessageService,
@@ -51,6 +52,11 @@ export class MessageBoardComponent implements OnInit {
         }
       }
     });
+  }
+
+
+  ngAfterViewChecked() {
+    this.mContainer.nativeElement.scrollTop = this.mContainer.nativeElement.scrollHeight;
   }
 
   getAll() {
@@ -93,10 +99,6 @@ export class MessageBoardComponent implements OnInit {
     this.groupService.outGroup()
   }
 
-  rename() {
-
-  }
-
   setJoin(isJoined: any) {
     this.joined = isJoined;
     let msg: Message = {
@@ -107,5 +109,9 @@ export class MessageBoardComponent implements OnInit {
     }
     this.messageService.addMessage(msg);
     this.getAll();
+  }
+
+  viewMembers() {
+
   }
 }

@@ -15,74 +15,38 @@ export class MessageService {
       groupId: 0,
       userId: 2,
       time: new Date('2021-12-28T00:01:00'),
-      content: 'userId 2 Hello'
+      content: 'Xin chào'
     }, {
       groupId: 0,
       userId: 3,
       time: new Date('2021-12-28T00:02:00'),
-      content: 'userId 3 Hello'
-    }, {
-      groupId: 0,
-      userId: 1,
-      time: new Date('2021-12-28T00:03:00'),
-      content: 'userId 1 Hello'
-    }, {
-      groupId: 0,
-      userId: 2,
-      time: new Date('2021-12-28T00:04:00'),
-      content: 'Hello'
-    }, {
-      groupId: 0,
-      userId: 2,
-      time: new Date('2021-12-28T00:05:00'),
-      content: 'Hello'
-    }, {
-      groupId: 0,
-      userId: 0,
-      time: new Date('2021-12-28T00:06:00'),
-      content: 'Hello'
-    }, {
-      groupId: 0,
-      userId: 1,
-      time: new Date('2021-12-28T00:07:00'),
-      content: 'Hello'
-    }, {
-      groupId: 0,
-      userId: 2,
-      time: new Date('2021-12-28T00:08:00'),
-      content: 'Hello'
-    }, {
-      groupId: 0,
-      userId: 2,
-      time: new Date('2021-12-28T00:09:00'),
-      content: 'Hello'
-    }, {
+      content: 'Chào cả nhà❤'
+    },{
       groupId: 0,
       userId: 0,
       time: new Date('2021-12-28T00:10:00'),
-      content: 'Hello'
+      content: 'Hi'
     }, {
       groupId: 0,
       userId: 1,
       time: new Date('2021-12-28T00:11:00'),
-      content: 'Hello'
+      content: '🎆🎆🎆'
     }, {
       groupId: 0,
-      userId: 2,
+      userId: 3,
       time: new Date('2021-12-28T00:12:00'),
-      content: 'Hello'
+      content: '😁😁😁😁😁😁🤣🤣🤣🤣🤣🤣🤣🤣🤣🤣🤣🤣🤣🤣🤣🤣🤣🤣🤣🤣🤣🤣😁😁😁😁😁😁🤣🤣🤣🤣🤣🤣🤣🤣🤣🤣🤣🤣🤣🤣🤣🤣🤣🤣🤣🤣🤣🤣'
     }, {
       groupId: 0,
       userId: 2,
       time: new Date('2021-12-28T00:13:00'),
-      content: 'Hello'
+      content: '🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉'
     }, {
       groupId: 0,
       userId: 0,
       time: new Date('2021-12-28T00:14:00'),
-      content: 'Hello'
+      content: '🎆🎆🎆'
     },
-
   ];
 
   constructor() {
