@@ -1,0 +1,6 @@
+<div class="d-flex justify-content-center mt-5 pt-5">
+  <div class="col-5" [formGroup]="inputNickname">
+    <input type="text" placeholder="Your name?" class="form-control" formControlName="nickname">
+  </div>
+  <button class="btn btn-success col-2 ms-1 fw-bold" (click)="joinGroup()">Join</button>
+</div>

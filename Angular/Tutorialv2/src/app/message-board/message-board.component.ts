@@ -5,6 +5,7 @@ import {Message} from "../model/message";
 import {UserService} from "../service/user.service";
 import {Users} from "../model/users";
 import {FormControl, FormGroup} from "@angular/forms";
+import {GroupService} from "../service/group.service";
 
 @Component({
   selector: 'app-message-board',
@@ -12,26 +13,44 @@ import {FormControl, FormGroup} from "@angular/forms";
   styleUrls: ['./message-board.component.css']
 })
 export class MessageBoardComponent implements OnInit {
-  group: Groups = {
-    groupId: 0,
-    groupName: 'abc123',
-    status: true,
-    avatar: 'https://static.turbosquid.com/Preview/001292/481/WV/_D.jpg'
-  }
+  group: Groups = {}
   messages: Message[] = []
-  user: Users = {};
-  showMenu: boolean = false;
+  userLoggedIn: Users = {};
+  menuShow: boolean = false;
   inputMessage = new FormGroup({
     msg: new FormControl()
   })
+  joined = false;
 
   constructor(
     private messageService: MessageService,
+    private userService: UserService,
+    private groupService: GroupService
   ) {
+
   }
 
   ngOnInit(): void {
-    this.getAll();
+    // Get user Logged in
+    this.userService.userLoggedIn.subscribe(value => this.userLoggedIn = value);
+    // group Selected
+    this.groupService.groupIdSelected.subscribe({
+      next: value => {
+        let gr = this.groupService.findGroupOfUserByGroupId();
+        if (gr != undefined) {
+          this.joined = true;
+          this.group = gr;
+          this.getAll();
+        } else {
+          gr = this.groupService.findGroupByGroupId();
+          if (gr != undefined) {
+            this.joined = false;
+            this.group = gr;
+            this.getAll();
+          }
+        }
+      }
+    });
   }
 
   getAll() {
@@ -39,6 +58,54 @@ export class MessageBoardComponent implements OnInit {
   }
 
   showMenuMSG() {
-    this.showMenu = !this.showMenu;
+    this.menuShow = !this.menuShow;
+    setTimeout(() => {
+      if (this.menuShow) {
+        this.menuShow = false;
+      }
+    }, 2000)
+  }
+
+  sendMSG() {
+    const ct = this.inputMessage.controls['msg'].value
+    if (ct != null && ct.trim() != '') {
+      let msg: Message = {
+        userId: this.userLoggedIn.userId,
+        groupId: this.group.groupId,
+        time: new Date(),
+        content: ct.trim(),
+      }
+      this.messageService.addMessage(msg);
+      this.inputMessage.reset()
+      this.getAll()
+    }
+  }
+
+  outGroup() {
+    let msg: Message = {
+      userId: this.userService.bot.userId,
+      groupId: this.group.groupId,
+      time: new Date(),
+      content: this.groupService.findNickNameById(this.userLoggedIn.userId) + " đã rời khỏi nhóm.",
+    }
+    this.messageService.addMessage(msg);
+    this.getAll();
+    this.groupService.outGroup()
+  }
+
+  rename() {
+
+  }
+
+  setJoin(isJoined: any) {
+    this.joined = isJoined;
+    let msg: Message = {
+      userId: this.userService.bot.userId,
+      groupId: this.group.groupId,
+      time: new Date(),
+      content: this.groupService.findNickNameById(this.userLoggedIn.userId) + " đã tham gia nhóm.",
+    }
+    this.messageService.addMessage(msg);
+    this.getAll();
   }
 }

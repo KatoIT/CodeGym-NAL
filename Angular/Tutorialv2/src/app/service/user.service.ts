@@ -1,5 +1,6 @@
 import {Injectable} from '@angular/core';
 import {Users} from "../model/users";
+import {BehaviorSubject} from "rxjs";
 
 @Injectable({
   providedIn: 'root'
@@ -7,6 +8,10 @@ import {Users} from "../model/users";
 export class UserService {
   users: Users[] = [
     {
+      userId: -404,
+      avatar: 'https://botbanhang.vn/images/logo-2.png',
+      nickName: 'Bot'
+    }, {
       userId: 0,
       avatar: 'https://static.turbosquid.com/Preview/001292/481/WV/_D.jpg',
       nickName: 'KatoIT'
@@ -28,13 +33,22 @@ export class UserService {
       nickName: 'User_04'
     }
   ]
-  user = this.users[0]
+  bot: Users = this.users[0];
+  // userLoggedIn = this.users[1];
+  userLoggedIn = new BehaviorSubject(this.users[1]);
 
-    constructor() {
+  constructor() {
   }
 
-  findUserById(id: number|undefined) {
+  findUserById(id: number | undefined) {
     return this.users.find(value => value.userId === id)
   }
+
+  login(userId: number) {
+    let u = this.users.find(value => value.userId === userId);
+    if (u != undefined)
+      this.userLoggedIn.next(u)
+  }
+
 
 }

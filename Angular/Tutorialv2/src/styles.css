@@ -196,7 +196,7 @@ body,html{
   margin-right: 20px;
 }
 
-.msg_cotainer {
+.msg_container {
   margin-top: auto;
   margin-bottom: auto;
   margin-left: 10px;
@@ -206,7 +206,7 @@ body,html{
   position: relative;
 }
 
-.msg_cotainer_send {
+.msg_container_send {
   margin-top: auto;
   margin-bottom: auto;
   margin-right: 10px;

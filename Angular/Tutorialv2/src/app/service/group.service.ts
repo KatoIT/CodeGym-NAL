@@ -1,12 +1,15 @@
 import {Injectable} from '@angular/core';
 import {Groups} from "../model/groups";
 import {UserInGroup} from "../model/user-in-group";
+import {BehaviorSubject, Subject} from "rxjs";
+import {UserService} from "./user.service";
+import {Users} from "../model/users";
 
 @Injectable({
   providedIn: 'root'
 })
 export class GroupService {
-  groups: Groups[] = [
+  groupsAll: Groups[] = [
     {
       groupId: 0,
       groupName: 'Group_01',
@@ -15,7 +18,7 @@ export class GroupService {
     }, {
       groupId: 1,
       groupName: 'Group_02',
-      avatar: 'https://lh3.googleusercontent.com/proxy/ErC4jKhMUBnCw2O9NXjb8PMTpgmsUVKnIH7i4gz1tq9GKw3pylBl7WscuMi9DGzk-UyuUlv68DllYa8tvZfGoOHEy3fORWt71G5f7fX1_wL638oV0Yk',
+      avatar: 'https://ps.w.org/image-hover-effects-block/assets/icon-128x128.png?rev=2117422',
       status: true
     }, {
       groupId: 2,
@@ -38,54 +41,109 @@ export class GroupService {
     {
       groupId: 0,
       userId: 0,
-      nickName: ''
-    }, {
+      nickName: 'KatoIT'
+    },{
       groupId: 0,
       userId: 1,
-      nickName: ''
+      nickName: 'User_01'
+    },{
+      groupId: 0,
+      userId: 2,
+      nickName: 'User_02'
     }, {
-      groupId: 1,
-      userId: 2
+      groupId: 0,
+      userId: 3,
+      nickName: 'User_03'
+    }, {
+      groupId: 3,
+      userId: 2,
+      nickName: 'User_02'
     }, {
       groupId: 1,
       userId: 1,
-      nickName: ''
+      nickName: 'User_01'
     }, {
       groupId: 4,
       userId: 0,
-      nickName: ''
+      nickName: 'KatoIT'
     }, {
       groupId: 0,
       userId: 4,
-      nickName: ''
+      nickName: 'User_04'
     }, {
       groupId: 2,
       userId: 0,
-      nickName: ''
+      nickName: 'KatoIT'
     }, {
       groupId: 3,
       userId: 0,
-      nickName: ''
+      nickName: 'KatoIT'
     }
   ]
+  groupIdSelected = new BehaviorSubject<number>(-1)
+  groupsOfUser: Groups[] = [];
 
-  constructor() {
+  constructor(
+    private userService: UserService
+  ) {
+    this.findGroupByUserId();
   }
 
-  findGroupByUserId(userId: number | undefined) {
-    let groupsOfUser: Groups[] = [];
+  findGroupByUserId() {
+    this.groupsOfUser.splice(0, this.groupsOfUser.length)
     for (let inGroup of this.userInGroup) {
-      if (userId == inGroup.userId) {
-        let gr = this.groups.find(value => value.groupId == inGroup.groupId);
+      if (this.userService.userLoggedIn.value.userId == inGroup.userId) {
+        let gr = this.groupsAll.find(value => value.groupId == inGroup.groupId);
         if (gr != undefined) {
-          groupsOfUser.push(gr);
+          this.groupsOfUser.push(gr);
         }
       }
     }
-    return groupsOfUser;
+  }
+
+  findGroupByGroupId() {
+    return this.groupsAll.find(value => value.groupId === this.groupIdSelected.value)
+  }
+
+  findGroupOfUserByGroupId() {
+    return this.groupsOfUser.find(value => value.groupId === this.groupIdSelected.value)
   }
 
   getAll() {
-    return this.groups;
+    return this.groupsAll;
+  }
+
+  outGroup() {
+    let index = this.userInGroup.findIndex(value =>
+      value.userId === this.userService.userLoggedIn.value.userId
+      && value.groupId === this.groupIdSelected.value);
+    this.userInGroup.splice(index, 1);
+    this.groupsOfUser.splice(
+      this.groupsOfUser.findIndex(
+        value => value.groupId === this.groupIdSelected.value),
+      1)
+    if (this.groupsOfUser[0].groupId != undefined) {
+      this.groupIdSelected.next(this.groupsOfUser[0].groupId)
+    }
+  }
+
+
+  joinGroup(nickName: string) {
+    this.userInGroup.push({
+      groupId: this.groupIdSelected.value,
+      userId: this.userService.userLoggedIn.value.userId,
+      nickName: nickName
+    })
+    this.findGroupByUserId()
+  }
+
+  findNickNameById(userId: number | undefined) {
+    if (userId === -404){
+      return "Bot"
+    }
+    let nickName = this.userInGroup.find(value => value.groupId === this.groupIdSelected.value && value.userId === userId);
+    if (nickName != undefined)
+      return nickName.nickName
+    return "No Name";
   }
 }

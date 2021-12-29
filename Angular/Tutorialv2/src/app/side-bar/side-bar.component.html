@@ -4,18 +4,21 @@
     <!--     Avatar     -->
     <div class="d-flex bd-highlight mt-2 mb-3">
       <div class="img_cont">
-        <img [src]="user.avatar" class="rounded-circle user_img">
+        <img [src]="userLogin.avatar" class="rounded-circle user_img">
         <span class="online_icon"></span>
       </div>
       <div class="user_info">
-        <span>{{user.nickName}}</span>
+        <span>{{userLogin.nickName}}</span>
         <p>Online</p>
       </div>
       <span id="action_add_btn" class="btn" (click)="showMenu()"><i class="fas fa-plus"></i></span>
       <div class="action_menu" *ngIf="menuShow">
         <ul>
+          <li (click)="login(0)"><i class="fas fa-user-circle"></i> Login KatoIT</li>
+          <li (click)="login(1)"><i class="fas fa-user-circle"></i> Login User_01</li>
+          <li (click)="login(2)"><i class="fas fa-user-circle"></i> Login User_02</li>
           <li><i class="fas fa-user-circle"></i> View profile</li>
-          <li (click)="addGroup()"><i class="fas fa-users"></i> Join to Group</li>
+          <li><i class="fas fa-users"></i> Join to Group</li>
           <li><i class="fas fa-plus"></i> Create to group</li>
           <li><i class="fas fa-ban"></i> Exit</li>
         </ul>
@@ -37,7 +40,7 @@
       <app-user-card *ngFor="let group of groups"
                      [group]="group"
                      [isSelect]="group.groupId==groupIdSelected"
-                     (click)="selectUser(group.groupId)"></app-user-card>
+                     (click)="selectGroup(group.groupId)"></app-user-card>
     </div>
   </div>
   <div class="card-footer"></div>

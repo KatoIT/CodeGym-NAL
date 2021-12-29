@@ -1,21 +1,23 @@
-<div *ngIf="userLogn.userId != message.userId" class="d-flex justify-content-start mb-4" >
+<div *ngIf="userLoggedIn.userId != message.userId" class="d-flex justify-content-start mb-4">
   <div class="img_cont_msg">
     <img [src]="user.avatar" class="rounded-circle user_img_msg">
   </div>
-  <div class="msg_cotainer" data-bs-toggle="tooltip" data-bs-placement="top" [title]="user.nickName">
+  <div class="msg_container" data-bs-toggle="tooltip" data-bs-placement="top" [title]="nickName">
     {{message.content}}
-    <span class="msg_time">8:40 AM</span>
+    <span class="msg_time" data-bs-toggle="tooltip" data-bs-placement="top"
+          [title]="message.time | date: 'dd-MM-yyyy'">{{message.time | date: 'hh:mm'}}</span>
   </div>
-<!--  <span class="">{{user.nickName}}</span>-->
+  <!--  <span class="">{{user.nickName}}</span>-->
 </div>
-<div *ngIf="userLogn.userId == message.userId" class="d-flex justify-content-end mb-4">
-  <div class="msg_cotainer_send">
+<div *ngIf="userLoggedIn.userId == message.userId" class="d-flex justify-content-end mb-4">
+  <div class="msg_container_send">
     {{message.content}}
-<!--    <span class="msg_time_send">9:05 AM, Today</span>-->
+    <span class="msg_time_send" data-bs-toggle="tooltip" data-bs-placement="top"
+          [title]="message.time | date: 'dd-MM-yyyy'">{{message.time | date: 'hh:mm'}}</span>
   </div>
-  <div class="img_cont_msg">
-    <img
-      [src]="user.avatar"
-      class="rounded-circle user_img_msg">
-  </div>
+  <!--  <div class="img_cont_msg">-->
+  <!--    <img-->
+  <!--      [src]="user.avatar"-->
+  <!--      class="rounded-circle user_img_msg">-->
+  <!--  </div>-->
 </div>

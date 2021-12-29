@@ -1,6 +1,6 @@
 export interface Message {
   userId?: number,
   groupId?: number,
-  time?: string,
+  time?: Date,
   content?: string,
 }
