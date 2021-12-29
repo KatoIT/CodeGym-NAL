@@ -13,27 +13,27 @@ export class GroupService {
   groupsAll: Groups[] = [
     {
       groupId: 0,
-      groupName: 'Group_01',
+      groupName: 'Tiếu Lâm Hội',
       avatar: 'https://thuthuatnhanh.com/wp-content/uploads/2020/09/hinh-anh-avatar-de-thuong.jpg',
       status: true
     }, {
       groupId: 1,
-      groupName: 'Group_02',
+      groupName: 'Image Group',
       avatar: 'https://ps.w.org/image-hover-effects-block/assets/icon-128x128.png?rev=2117422',
       status: true
     }, {
       groupId: 2,
-      groupName: 'Group_03',
+      groupName: 'SongoMon Group',
       avatar: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSNOxW9M4u4-NarBngujCBd94zuSBeUBI6fEA&usqp=CAU',
       status: true
     }, {
       groupId: 3,
-      groupName: 'Group_04',
+      groupName: 'Mộc tồn Group',
       avatar: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTAxo-JtDX_l4fYlVvlJL2GLKpNN7TfgPPjhg&usqp=CAU',
       status: false
     }, {
       groupId: 4,
-      groupName: 'Group_05',
+      groupName: 'Dragon Group',
       avatar: 'https://i.pinimg.com/originals/7c/70/ee/7c70eeef9594b10a5d4bd9ed2fe2e085.jpg',
       status: true
     }
@@ -46,23 +46,23 @@ export class GroupService {
     }, {
       groupId: 0,
       userId: 1,
-      nickName: 'User_01'
+      nickName: 'Duy LQ'
     }, {
       groupId: 0,
       userId: 2,
-      nickName: 'User_02'
+      nickName: 'Q.Anh'
     }, {
       groupId: 0,
       userId: 3,
-      nickName: 'User_03'
+      nickName: 'Phương'
     }, {
       groupId: 3,
       userId: 2,
-      nickName: 'User_02'
+      nickName: 'Q.Anh'
     }, {
       groupId: 1,
       userId: 1,
-      nickName: 'User_01'
+      nickName: 'Duy LQ'
     }, {
       groupId: 4,
       userId: 0,
@@ -70,7 +70,7 @@ export class GroupService {
     }, {
       groupId: 0,
       userId: 4,
-      nickName: 'User_04'
+      nickName: 'Son'
     }, {
       groupId: 2,
       userId: 0,
@@ -101,6 +101,9 @@ export class GroupService {
         }
       }
     }
+  }
+
+  selectFirstGroup() {
     if (this.groupsOfUser[0].groupId != undefined) {
       this.groupIdSelected.next(this.groupsOfUser[0].groupId)
     }

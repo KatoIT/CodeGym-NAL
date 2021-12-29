@@ -84,7 +84,9 @@ export class MessageBoardComponent implements OnInit {
       this.messageService.addMessage(msg);
       this.inputMessage.reset()
       this.getAll()
+      console.log(msg)
     }
+
   }
 
   outGroup() {

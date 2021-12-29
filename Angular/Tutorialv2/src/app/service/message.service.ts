@@ -21,7 +21,7 @@ export class MessageService {
       userId: 3,
       time: new Date('2021-12-28T00:02:00'),
       content: 'Chào cả nhà❤'
-    },{
+    }, {
       groupId: 0,
       userId: 0,
       time: new Date('2021-12-28T00:10:00'),
@@ -46,7 +46,12 @@ export class MessageService {
       userId: 0,
       time: new Date('2021-12-28T00:14:00'),
       content: '🎆🎆🎆'
-    },
+    }, {
+      userId: 0,
+      groupId: 4,
+      time: new Date('Wed Dec 29 2021 16:59:35 GMT+0700 (Indochina Time)'),
+      content: 'He lo o'
+    }
   ];
 
   constructor() {
@@ -56,7 +61,7 @@ export class MessageService {
     return this.messages.filter(value => value.groupId == groupId);
   }
 
-  addMessage(msg: Message){
+  addMessage(msg: Message) {
     this.messages.push(msg);
   }
 }
