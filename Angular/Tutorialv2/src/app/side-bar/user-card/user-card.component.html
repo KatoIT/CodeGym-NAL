@@ -1,0 +1,12 @@
+<li [class.active]="isSelect">
+  <div class="d-flex bd-highlight">
+    <div class="img_cont">
+      <img [src]="group.avatar" class="rounded-circle user_img">
+      <span class="online_icon" [class.offline]="!group.status"></span>
+    </div>
+    <div class="user_info">
+      <span>{{group.groupName}}</span>
+      <p>{{group.groupName}} is <strong *ngIf="group.status">online</strong><strong *ngIf="!group.status">offline</strong></p>
+    </div>
+  </div>
+</li>

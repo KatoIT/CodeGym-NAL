@@ -1,0 +1,43 @@
+<div class="card mb-sm-3 mb-md-0 contacts_card" style="height: 98%">
+  <div class="card-header">
+    <!--  User logged in  -->
+    <div class="d-flex bd-highlight mt-2 mb-3">
+      <div class="img_cont">
+        <!--  Avatar  -->
+        <img [src]="userLoggedIn.avatar" class="rounded-circle user_img">
+        <span class="online_icon"></span>
+      </div>
+      <div class="user_info">
+        <span>{{userLoggedIn.nickName}}</span>
+        <p>Online</p>
+      </div>
+      <!--   Menu   -->
+      <span id="action_add_btn" class="btn" (click)="showMenu()"><i class="fas fa-ellipsis-v"></i></span>
+      <div class="action_menu" *ngIf="menuShow">
+        <ul>
+          <li (click)="login(0)"><i class="fas fa-user-circle"></i> Login KatoIT</li>
+          <li (click)="login(1)"><i class="fas fa-user-circle"></i> Login User_01</li>
+          <li (click)="login(2)"><i class="fas fa-user-circle"></i> Login User_02</li>
+        </ul>
+      </div>
+    </div>
+    <!--  Input Search  -->
+    <div class="input-group" [formGroup]="inputSearch">
+      <input type="text" placeholder="Search..." name="" class="form-control search" formControlName="textSearch">
+      <div class="input-group-lg">
+        <span class="input-group-text search_btn" (click)="searchGroup()"><i class="fas fa-search"></i></span>
+      </div>
+    </div>
+  </div>
+  <!--  SlideBar  -->
+  <div class="card-body contacts_body">
+    <div class="contacts">
+      <!--  UserGroup  -->
+      <app-user-card *ngFor="let group of groupsOfUser"
+                     [group]="group"
+                     [isSelect]="group.groupId==groupIdSelected"
+                     (click)="selectGroup(group.groupId)"></app-user-card>
+    </div>
+  </div>
+  <div class="card-footer"></div>
+</div>
