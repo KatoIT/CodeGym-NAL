@@ -186,8 +186,14 @@ body,html{
 }
 
 .video_cam {
-  margin-left: 50px;
-  margin-top: 25px;
+  /*margin-left: 50px;*/
+  margin-top: 15px;
+  position: absolute;
+  right: 15px;
+  top: 20px;
+  color: white;
+  cursor: pointer;
+  font-size: 20px;
 }
 
 .video_cam span {
@@ -262,7 +268,7 @@ body,html{
   background-color: rgba(0, 0, 0, 0.5);
   color: white;
   border-radius: 15px;
-  top: 50px;
+  top: 75px;
   right: 15px;
   /*display: none;*/
 }

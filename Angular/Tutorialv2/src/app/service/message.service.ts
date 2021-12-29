@@ -53,7 +53,6 @@ export class MessageService {
       content: 'He lo o'
     }
   ];
-
   constructor() {
   }
 

@@ -16,11 +16,12 @@ export class MessageBoardComponent implements OnInit {
   group: Groups = {}
   messages: Message[] = []
   userLoggedIn: Users = {};
-  menuShow: boolean = false;
+  menuListMembers: boolean = false;
   inputMessage = new FormGroup({
     msg: new FormControl()
   })
   joined = false;
+  members: Users[] = [];
   @ViewChild("messageContainer") mContainer: ElementRef = new ElementRef<number>(1);
 
   constructor(
@@ -50,6 +51,7 @@ export class MessageBoardComponent implements OnInit {
             this.getAll();
           }
         }
+        this.inputMessage.reset()
       }
     });
   }
@@ -61,13 +63,14 @@ export class MessageBoardComponent implements OnInit {
 
   getAll() {
     this.messages = this.messageService.findMessageByGroupId(this.group.groupId);
+    this.members = this.groupService.getMembers();
   }
 
-  showMenuMSG() {
-    this.menuShow = !this.menuShow;
+  showListMembers() {
+    this.menuListMembers = !this.menuListMembers;
     setTimeout(() => {
-      if (this.menuShow) {
-        this.menuShow = false;
+      if (this.menuListMembers) {
+        this.menuListMembers = false;
       }
     }, 2000)
   }
@@ -114,6 +117,16 @@ export class MessageBoardComponent implements OnInit {
   }
 
   viewMembers() {
+    this.menuListMembers = !this.menuListMembers;
+  }
 
+  getNickName(userId: any){
+    return this.groupService.findNickNameById(userId)
+  }
+
+  chatWithMember(mem: Users) {
+    this.menuListMembers = false
+    this.groupService.newGroup(mem);
+    this.getAll();
   }
 }

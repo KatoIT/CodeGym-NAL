@@ -157,4 +157,44 @@ export class GroupService {
       return nickName.nickName
     return "The user has left the group";
   }
+
+  getMembers() {
+    let users: Users[] = [];
+    for (let inGroup of this.userInGroup) {
+      if (this.groupIdSelected.value == inGroup.groupId) {
+        let user = this.userService.findUserById(inGroup.userId)
+        if (user != undefined) {
+          users.push(user);
+        }
+      }
+    }
+    return users;
+  }
+
+  newGroup(mem: Users) {
+    let gr: Groups = {
+      groupId: this.groupsAll.length + 1,
+      groupName: mem.nickName,
+      avatar: mem.avatar,
+      status: true
+    }
+    this.groupsAll.push(gr)
+    this.userInGroup.push({
+      groupId: gr.groupId,
+      userId: mem.userId,
+      nickName: mem.nickName
+    });
+    if (this.userService.userLoggedIn.value.userId != mem.userId) {
+      this.userInGroup.push({
+        groupId: gr.groupId,
+        userId: this.userService.userLoggedIn.value.userId,
+        nickName: this.userService.userLoggedIn.value.nickName
+      });
+    }
+
+    this.groupsOfUser.push(gr)
+    if (gr.groupId)
+      this.groupIdSelected.next(gr.groupId)
+  }
+
 }
