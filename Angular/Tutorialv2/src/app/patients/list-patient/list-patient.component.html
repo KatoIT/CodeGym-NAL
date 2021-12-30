@@ -20,8 +20,8 @@
       <td>{{patient.idRecord}}</td>
       <td>{{patient.patientId}}</td>
       <td>{{patient.patientName}}</td>
-      <td>{{patient.startIn}}</td>
-      <td>{{patient.startOut}}</td>
+      <td>{{patient.startIn | date:'dd/MM/yyyy'}}</td>
+      <td>{{patient.startOut | date:'dd/MM/yyyy'}}</td>
       <td>{{patient.reason}}</td>
       <td>{{patient.treatmentMethods}}</td>
       <td>{{patient.doctorName}}</td>

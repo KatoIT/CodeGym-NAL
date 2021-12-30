@@ -70,9 +70,11 @@
       <tr>
         <td class="col-3">Phương pháp điều trị</td>
         <td class="col-8">
-          <textarea name="siron" id="a" cols="50" rows="3" class="form-control" formControlName="treatmentMethods"></textarea>
-          <div *ngIf="treatmentMethods && treatmentMethods.invalid && (treatmentMethods.dirty || treatmentMethods.touched)"
-               class="alert-danger">
+          <textarea name="siron" id="a" cols="50" rows="3" class="form-control"
+                    formControlName="treatmentMethods"></textarea>
+          <div
+            *ngIf="treatmentMethods && treatmentMethods.invalid && (treatmentMethods.dirty || treatmentMethods.touched)"
+            class="alert-danger">
             <label *ngIf="treatmentMethods.errors?.['required']">
               Nhập Phương pháp điều trị
             </label>
@@ -95,7 +97,7 @@
         <td class="col-3"></td>
         <td class="col-8">
           <button class="btn btn-success">Sửa</button>
-          <button class="btn btn-info">Trở về danh sách</button>
+          <button class="btn btn-info" [routerLinkActive]="['listPatient']">Trở về danh sách</button>
         </td>
       </tr>
     </table>

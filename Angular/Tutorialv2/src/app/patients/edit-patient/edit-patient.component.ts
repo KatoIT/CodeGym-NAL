@@ -3,6 +3,7 @@ import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {PatientService} from "../../service/patient.service";
 import {ActivatedRoute, ParamMap, Router} from "@angular/router";
 import {Patient} from "../../model/patient";
+import {formatDate} from "@angular/common";
 
 @Component({
   selector: 'app-edit-patient',
@@ -73,10 +74,10 @@ export class EditPatientComponent implements OnInit {
         Validators.required,
         Validators.pattern('^[^<0-9>]*$')
       ]),
-      startIn: new FormControl(this.patient?.startIn, [
+      startIn: new FormControl(formatDate(this.patient?.startIn ? this.patient?.startIn : new Date(), "yyyy-MM-dd", "en"), [
         Validators.required,
       ]),
-      startOut: new FormControl(this.patient?.startOut, [
+      startOut: new FormControl(formatDate(this.patient?.startOut ? this.patient?.startOut : new Date(), "yyyy-MM-dd", "en"), [
         Validators.required,
       ]),
       reason: new FormControl(this.patient?.reason, [
@@ -97,7 +98,7 @@ export class EditPatientComponent implements OnInit {
   }
 
   updatePatient(id: any) {
-    // this.router.navigate(['/listPatient'])
+    this.router.navigate(['/listPatient'])
     this.patientService.updatePatient(id, this.formGroup.value)
   }
 

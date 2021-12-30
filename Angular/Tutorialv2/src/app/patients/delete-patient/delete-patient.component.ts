@@ -25,7 +25,7 @@ export class DeletePatientComponent implements OnInit {
   }
 
   delete() {
-    // this.router.navigate(['/listPatient'])
+    this.router.navigate(['/listPatient'])
     this.patientService.deletePatient(this.id)
   }
 }

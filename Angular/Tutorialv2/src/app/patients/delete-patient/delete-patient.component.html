@@ -1,3 +1,3 @@
 <p>Bạn có muốn xóa bệnh án {{id}} hay không?</p>
-<button>KHông</button>
-<button (click)="delete()">Có</button>
+<button [routerLinkActive]="['listPatient']" class="btn btn-info">Không</button>
+<button (click)="delete()" class="btn btn-danger ms-2">Có</button>
