@@ -25,7 +25,8 @@
       <td>{{patient.reason}}</td>
       <td>{{patient.treatmentMethods}}</td>
       <td>{{patient.doctorName}}</td>
-      <td><span class="btn" [routerLink]="['/editPatient', patient.idRecord]">edit</span><span class="btn">Delete</span></td>
+      <td><span class="btn" [routerLink]="['/editPatient', patient.idRecord]">edit</span>
+        <span class="btn" [routerLink]="['/deletePatient', patient.idRecord]">Delete</span></td>
     </tr>
   </table>
 </div>
