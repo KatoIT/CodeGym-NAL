@@ -1,0 +1,32 @@
+<div class="">
+  <h1>Danh sách bệnh án</h1>
+</div>
+<div class="table table-bordered border ">
+  <table class="">
+    <tr>
+      <th>STT</th>
+      <th class="col-1">Mã bệnh án</th>
+      <th class="col-1">Mã bệnh nhân</th>
+      <th class="col-1">Tên bệnh nhân</th>
+      <th class="col-1">Ngày nhập viện</th>
+      <th class="col-1">Ngày ra viện</th>
+      <th class="col-2">Lý do nhập viện</th>
+      <th class="col-2">Phương án điều trị</th>
+      <th class="col-2">Bác sỹ điều trị</th>
+      <th class="col-1">Tác vụ</th>
+    </tr>
+    <tr *ngFor="let patient of listPatient; index as i">
+      <td>{{i + 1}}</td>
+      <td>{{patient.idRecord}}</td>
+      <td>{{patient.patientId}}</td>
+      <td>{{patient.patientName}}</td>
+      <td>{{patient.startIn}}</td>
+      <td>{{patient.startOut}}</td>
+      <td>{{patient.reason}}</td>
+      <td>{{patient.treatmentMethods}}</td>
+      <td>{{patient.doctorName}}</td>
+      <td><span class="btn" [routerLink]="['/editPatient', patient.idRecord]">edit</span><span class="btn">Delete</span></td>
+    </tr>
+  </table>
+</div>
+

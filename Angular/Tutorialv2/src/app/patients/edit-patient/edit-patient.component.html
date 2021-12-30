@@ -1,0 +1,103 @@
+<div>
+  <h1>Sửa thông tin bệnh án</h1>
+</div>
+<div class="" [formGroup]="formGroup" (ngSubmit)="updatePatient(id)">
+  <form action="">
+    <table class=" ms-5">
+      <tr>
+        <td class="col-3">Mã bệnh án</td>
+        <td class="col-8">
+          <input type="text" readonly="readonly" class="bg-secondary text-light" formControlName="idRecord">
+        </td>
+      </tr>
+      <tr>
+        <td class="col-3">Mã bệnh nhân</td>
+        <td class="col-8">
+          <input type="text" readonly="readonly" class="bg-secondary text-light" formControlName="patientId">
+        </td>
+      </tr>
+      <tr>
+        <td class="col-3">Tên bệnh nhân</td>
+        <td class="col-8">
+          <input type="text" class="form-control" formControlName="patientName">
+          <div *ngIf="patientName && patientName.invalid && (patientName.dirty || patientName.touched)"
+               class="alert-danger">
+            <label *ngIf="patientName.errors?.['required']">
+              Nhập tên bệnh nhân
+            </label>
+            <label *ngIf="patientName.errors?.['pattern']">
+              Tên bệnh nhân không chứa ký tự số.
+            </label>
+          </div>
+        </td>
+      </tr>
+      <tr>
+        <td class="col-3">Ngày nhập viện</td>
+        <td class="col-8">
+          <input type="date" class="form-control" formControlName="startIn">
+          <div *ngIf="startIn && startIn.invalid && (startIn.dirty || startIn.touched)"
+               class="alert-danger">
+            <label *ngIf="startIn.errors?.['required']">
+              Nhập ngày nhập viện
+            </label>
+          </div>
+        </td>
+      </tr>
+      <tr>
+        <td class="col-3">Ngày xuất viện</td>
+        <td class="col-8">
+          <input type="date" class="form-control" formControlName="startOut">
+          <div *ngIf="startOut && startOut.invalid && (startOut.dirty || startOut.touched)"
+               class="alert-danger">
+            <label *ngIf="startOut.errors?.['required']">
+              Nhập ngày xuất viện
+            </label>
+          </div>
+        </td>
+      </tr>
+      <tr>
+        <td class="col-3">Lý do nhập viện</td>
+        <td class="col-8">
+          <textarea name="siron" id="a" cols="50" rows="2" class="form-control" formControlName="reason"></textarea>
+          <div *ngIf="reason && reason.invalid && (reason.dirty || reason.touched)"
+               class="alert-danger">
+            <label *ngIf="reason.errors?.['required']">
+              Nhập Lý do nhập viện
+            </label>
+          </div>
+        </td>
+      </tr>
+      <tr>
+        <td class="col-3">Phương pháp điều trị</td>
+        <td class="col-8">
+          <textarea name="siron" id="a" cols="50" rows="3" class="form-control" formControlName="treatmentMethods"></textarea>
+          <div *ngIf="treatmentMethods && treatmentMethods.invalid && (treatmentMethods.dirty || treatmentMethods.touched)"
+               class="alert-danger">
+            <label *ngIf="treatmentMethods.errors?.['required']">
+              Nhập Phương pháp điều trị
+            </label>
+          </div>
+        </td>
+      </tr>
+      <tr>
+        <td class="col-3">Bác sĩ điều trị</td>
+        <td class="col-8">
+          <input type="text" class="form-control" formControlName="doctorName">
+          <div *ngIf="doctorName && doctorName.invalid && (doctorName.dirty || doctorName.touched)"
+               class="alert-danger">
+            <label *ngIf="doctorName.errors?.['required']">
+              Nhập tên bác sĩ điều trị
+            </label>
+          </div>
+        </td>
+      </tr>
+      <tr>
+        <td class="col-3"></td>
+        <td class="col-8">
+          <button class="btn btn-success">Sửa</button>
+          <button class="btn btn-info">Trở về danh sách</button>
+        </td>
+      </tr>
+    </table>
+  </form>
+</div>
